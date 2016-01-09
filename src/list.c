@@ -1,32 +1,50 @@
-#include "list.h"
+#include "cu.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define LIST_INIT_ERR(L) if (L == \
                              NULL) {fprintf(stderr, "list not initalized"); \
-                                    return; }
+                                    abort(); }
 
-inline list_t *list_new() {
+inline void *list_new() {
     return calloc(1, sizeof(list_t));
 }
 
 
-inline list_t *list_clone(list_t *li) {
+inline void *list_clone(const list_t *li, void *(*clonef)(void *)) {
     list_t *clone = list_new();
-    LIST_FOR(i, li)
-    {
-        list_append(clone, i->data);
+    if (clonef == NULL) {
+        LIST_FOR(i, li)
+        {
+            list_append(clone, i->data);
+        }
+    } else {
+        LIST_FOR(i, li)
+        {
+            list_append(clone, clonef(i->data));
+        }
     }
+
     return clone;
 }
 
 
-inline void list_clear(list_t *li, void df(void *)) {
+inline void list_clear(const list_t *li, void (*df)(void *)) {
     LIST_INIT_ERR(li);
-    LIST_FOR(i, li)
-    {
-        free(i->data);
+
+    if (df == NULL) {
+        LIST_FOR(i, li)
+        {
+            memset(i->data, 0, sizeof(void *));
+        }
+    } else {
+        LIST_FOR(i, li)
+        {
+            df(i->data);
+        }
     }
+
 }
 
 
@@ -67,12 +85,12 @@ inline void list_append(list_t *li, void *data) {
 }
 
 
-inline bool list_is_empty(list_t *li) {
+inline bool list_is_empty(const list_t *li) {
     return list_len(li) == 0;
 }
 
 
-inline uint64_t list_len(list_t *li) {
+inline uint64_t list_len(const list_t *li) {
     if (li == NULL) {
         fprintf(stderr, "list not initialized\n");
         return 0;
@@ -81,7 +99,8 @@ inline uint64_t list_len(list_t *li) {
 }
 
 
-inline void list_foreach(list_t *li, void f(void *)) {
+inline void list_foreach(const list_t *li, void f(void *)) {
+    LIST_INIT_ERR(li);
     LIST_FOR(i, li)
     {
         f(i->data);
@@ -89,11 +108,17 @@ inline void list_foreach(list_t *li, void f(void *)) {
 }
 
 
-inline list_t *list_filter(list_t *li, void pred(void *, void *), void *arg) {
-    return NULL;
+inline void *list_filter(const list_t *li,
+                         void (*pred)(const void *,
+                                      const void *),
+                         void *arg) {
+    UNIMPLEMENTED;
 }
 
 
-inline void *list_find(list_t *li, void pred(void *, void *), void *arg) {
-    return NULL;
+inline void *list_find(const list_t *li, const void *key,
+                       void pred(const void *,
+                                 const void *),
+                       void *arg) {
+    UNIMPLEMENTED;
 }

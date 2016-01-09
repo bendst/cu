@@ -1,27 +1,29 @@
 #pragma once
 #include <stdint.h>
+#include <stdbool.h>
 
-/** @brief dynamic Array
+/** @brief vector
  *
  */
 typedef struct  {
     /** data **/
     void **data;
-    /** allokierter memory **/
+    /** allocated memory **/
     uint32_t memsize;
     /** member counter **/
     uint32_t count;
 } vector_t;
 
-/** creates a new empty array
- *  @result returns a new arrayList
+/** creates a new empty vector of the size 10
+ *  @result a new vector
  **/
 extern vector_t *vector_new();
 
 
-/** creates a empty array of the size n
+/** creates a empty vector of the size n
  *  @param n size of the empty array
  *  @param returns a new vector
+ *  @result a new vector
  **/
 extern vector_t *vector_with_cap(uint32_t n);
 
@@ -33,8 +35,13 @@ extern vector_t *vector_with_cap(uint32_t n);
 extern void vector_append(vector_t *v, void *data);
 
 
-/****/
-extern void vector_del_at(vector_t *v, uint32_t index, void df(void *));
+/**
+ * delete a element from the vector
+ * @param v     vector
+ * @param index of the element to remove
+ * @param df    deleting function for the given element. df is ignored if NULL
+ */
+extern void vector_del_at(vector_t *v, uint32_t index, void (*df)(void *));
 
 
 /** returns the data of the index
@@ -42,14 +49,14 @@ extern void vector_del_at(vector_t *v, uint32_t index, void df(void *));
  *  @param i index to fetch
  *  @result returns the pointer to the data
  **/
-extern void *vector_get(vector_t *v, uint32_t index);
+extern void *vector_get(const vector_t *v, uint32_t index);
 
 
 /** apply the funtion f to every element in the vector
  *  @param list vector to operate on
  *  @param f function to apply
  **/
-extern void vector_foreach(vector_t *v, void (*f)(void *));
+extern void vector_foreach(const vector_t *v, void (*f)(void *));
 
 
 /** delete the  vector no element in the structure is deleted
@@ -67,3 +74,27 @@ extern void vector_clear(vector_t *v, void (*df)(void *));
  *  @param df function with which the data should be deleted
  **/
 extern void vector_clear_del(vector_t *v, void (*df)(void *));
+
+
+/**
+ * Check whether a element is in the vector.
+ * Example for predicate functions:
+ *      for Integer on stack:
+ *          return memcmp(a, *(void **)b, sizeof(int32_t))
+ *
+ * @param  v    vector to search
+ * @param  key  item to find
+ * @param  pred predicate function
+ * @return      returns true on succuss and false on failure
+ */
+extern bool vector_contains(const vector_t *v, const void *key, int (*pred)(
+                                const void *,
+                                const void *));
+
+
+/**
+ * Sort the vector with quicksort
+ * @param v    vector to sort
+ * @param pred predicate function
+ */
+extern void vector_sort(vector_t *v, int (*pred)(const void *, const void *));

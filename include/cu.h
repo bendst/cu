@@ -4,8 +4,8 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#define UNIMPLEMENTED (fprintf(stderr, "not implemented %s@%d\n", __FILE__, \
-                               __LINE__); exit(EXIT_FAILURE))
+#define UNIMPLEMENTED fprintf(stderr, "%s not implemented %s@%d\n", __func__, __FILE__, \
+                               __LINE__); abort();
 
 #include "vector.h"
 #include "list.h"

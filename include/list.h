@@ -14,18 +14,100 @@ typedef struct {
     uint64_t size;
 } list_t;
 
-extern list_t *list_new();
+/**
+ * create a new list
+ * @return a new list_t
+ */
+extern void *list_new();
 
-extern list_t *list_clone(list_t *li);
-extern void list_clear(list_t *li, void df(void *));
+
+/**
+ * clone given list
+ * @param  li list to clone
+ * @param clone function for given element. In case of NULL it is ignored
+ * @return    a new list_t
+ */
+extern void *list_clone(const list_t *li, void *(*clone)(void *));
+
+
+/**
+ * clear a list of every entry
+ * @param li list to clear
+ * @param df deleting function, in case of NULL the argument is ignored
+ */
+extern void list_clear(const list_t *li, void (*df)(void *));
+
+
+/**
+ * delete a list
+ * @param li list to delete
+ */
 extern void list_del(list_t *li);
-extern void list_clear_del(list_t *li, void df(void *));
+
+
+/**
+ * clear and delete a list
+ * @param li list to clear and delete
+ * @param df deleting function, in case of NULL the argument is ignored
+ */
+extern void list_clear_del(list_t *li, void (*df)(void *));
+
+
+/**
+ * append an element to the list
+ * @param li   list to append to
+ * @param data data to append
+ */
 extern void list_append(list_t *li, void *data);
-extern bool list_is_empty(list_t *li);
-extern uint64_t list_len(list_t *li);
-extern void list_foreach(list_t *li, void f(void *));
-extern list_t *list_filter(list_t *li, void pred(void *, void *), void *arg);
-extern void *list_find(list_t *li, void pred(void *, void *), void *arg);
+
+
+/**
+ * check whether the list is empty
+ * @param  li list to check
+ * @return    returns true on success and false on failure
+ */
+extern bool list_is_empty(const list_t *li);
+
+
+/**
+ * retrieve the length of a list
+ * @param  li list to check
+ * @return    returns the list length
+ */
+extern uint64_t list_len(const list_t *li);
+
+
+/**
+ * apply a function to every element of the list
+ * @param li list
+ * @param f  function to apply
+ */
+extern void list_foreach(const list_t *li, void (*f)(void *));
+
+
+/**
+ * filter elements by given predicate
+ * @param  li   list to filter
+ * @param  pred predicate function
+ * @return      returns a new list_t which contains all elements that returned true
+ */
+extern void *list_filter(const list_t *li,
+                         void (*pred)(const void *,
+                                      const void *),
+                         void *arg);
+
+
+/**
+ * find a element in the list
+ * @param  li   list to search
+ * @param  pred predicate function
+ * @return      returns a pointer to the element
+ */
+extern void *list_find(const list_t *li,
+                       const void *key,
+                       void (*pred)(const void *,
+                                    const void *),
+                       void *arg);
 
 
 /*
@@ -34,5 +116,6 @@ extern void *list_find(list_t *li, void pred(void *, void *), void *arg);
  *---------------------------------------------------------------------------
  */
 
- #define LIST_FOR(IT, L) struct listnode_t * IT = NULL; for (IT = L->head; IT != NULL; \
-                                                      IT = IT->next)
+ #define LIST_FOR(IT, L) struct listnode_t *IT = NULL; for (IT = L->head; \
+                                                            IT != NULL; \
+                                                            IT = IT->next)
