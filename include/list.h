@@ -5,6 +5,7 @@
 typedef struct listnode_t {
     void *data;
     struct listnode_t *next;
+    struct listnode_t *prev;
 } listnode_t;
 
 typedef struct {
@@ -33,5 +34,5 @@ extern void *list_find(list_t *li, void pred(void *, void *), void *arg);
  *---------------------------------------------------------------------------
  */
 
- #define LIST_FOR(IT, L) listnode_t * IT = NULL; for (IT = L->head; IT != NULL; \
+ #define LIST_FOR(IT, L) struct listnode_t * IT = NULL; for (IT = L->head; IT != NULL; \
                                                       IT = IT->next)

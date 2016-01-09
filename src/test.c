@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
-#include "vector.h"
+#include "cu.h"
 
 void print(void *ptr){
     int32_t data = *(int32_t*)ptr;
@@ -22,5 +22,19 @@ int main(int argc, char const *argv[]) {
 
     vector_foreach(v1, print);
     vector_del(v1);
+
+
+    list_t *l1 = list_new();
+    printf("list size: %ld\n", l1->size);
+    for (size_t i = 0; i < 20; i++) {
+        void *data = &array[i];
+        list_append(l1, data);
+    }
+    printf("list size: %ld\n", l1->size);
+
+
+    list_foreach(l1, print);
+    list_del(l1);
+
     return 0;
 }

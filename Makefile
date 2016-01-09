@@ -6,7 +6,7 @@ LIBRARY = bin/libcu.a
 $(BIN): obj/test.o  $(LIBRARY)
 	$(CC) $^ -o $@ $(LDFLAGS)
 
-$(LIBRARY): obj/vector.o
+$(LIBRARY): obj/vector.o obj/list.o
 	$(AR) rs $@ $^
 
 obj/%.o: src/%.c
