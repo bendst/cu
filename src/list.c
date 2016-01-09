@@ -110,8 +110,15 @@ inline void *list_filter(const list_t *li,
                          const void *key,
                          bool (*pred)(const void *,
                                       const void *)) {
-    /* #warning "__func__@__LINE__ not implemented"; */
-    UNIMPLEMENTED;
+    LIST_INIT_ERR(li);
+    list_t *filter_copy = list_new();
+    LIST_FOR(i, li){
+        if(pred(key, i->data)){
+            list_append(filter_copy, i->data);
+        }
+    }
+    return filter_copy;
+
 }
 
 

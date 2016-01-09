@@ -4,10 +4,13 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#define UNIMPLEMENTED fprintf(stderr, "%s not implemented %s@%d\n", __func__, __FILE__, \
-                               __LINE__); abort();
+#define UNIMPLEMENTED fprintf(stderr, \
+                              "%s not implemented %s@%d\n", \
+                              __func__, \
+                              __FILE__, \
+                              __LINE__); abort();
 
-//#include "vector.h"
+/* #include "vector.h" */
 
 /** @brief vector
  *
@@ -100,13 +103,27 @@ extern bool vector_contains(const vector_t *v, const void *key, int (*pred)(
 
 
 /**
+ * find an element in given vector
+ * @param  v    vector to search
+ * @param  key  key property
+ * @param  pred predicate function
+ * @return      returns the item found, NULL is returned in case of an error
+ */
+extern void *vector_find(const vector_t *v,
+                         const void *key,
+                         bool (*pred)(const void *,
+                                      const void *));
+
+
+/**
  * Sort the vector with quicksort
  * @param v    vector to sort
  * @param pred predicate function
  */
 extern void vector_sort(vector_t *v, int (*pred)(const void *, const void *));
 
-//#include "list.h"
+
+/* #include "list.h" */
 
 typedef struct listnode_t {
     void *data;
@@ -194,26 +211,27 @@ extern void list_foreach(const list_t *li, void (*f)(void *));
 /**
  * filter elements by given predicate
  * @param  li   list to filter
+ * @param key key to find
  * @param  pred predicate function
  * @return      returns a new list_t which contains all elements that returned true
  */
 extern void *list_filter(const list_t *li,
-                         void (*pred)(const void *,
-                                      const void *),
-                         void *arg);
+                         const void *key,
+                         bool (*pred)(const void *,
+                                      const void *));
 
 
 /**
  * find a element in the list
  * @param  li   list to search
+ * @param key key to find
  * @param  pred predicate function
  * @return      returns a pointer to the element
  */
 extern void *list_find(const list_t *li,
                        const void *key,
-                       void (*pred)(const void *,
-                                    const void *),
-                       void *arg);
+                       bool (*pred)(const void *,
+                                    const void *));
 
 
 /*

@@ -88,26 +88,27 @@ extern void list_foreach(const list_t *li, void (*f)(void *));
 /**
  * filter elements by given predicate
  * @param  li   list to filter
+ * @param key key to find
  * @param  pred predicate function
  * @return      returns a new list_t which contains all elements that returned true
  */
 extern void *list_filter(const list_t *li,
-                         void (*pred)(const void *,
-                                      const void *),
-                         void *arg);
+                         const void *key,
+                         bool (*pred)(const void *,
+                                      const void *));
 
 
 /**
  * find a element in the list
  * @param  li   list to search
+ * @param key key to find
  * @param  pred predicate function
  * @return      returns a pointer to the element
  */
 extern void *list_find(const list_t *li,
                        const void *key,
-                       void (*pred)(const void *,
-                                    const void *),
-                       void *arg);
+                       bool (*pred)(const void *,
+                                    const void *));
 
 
 /*
