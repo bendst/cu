@@ -1,6 +1,4 @@
 #include "cu.h"
-#include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
 #define LIST_INIT_ERR(L) if (L == \
@@ -109,16 +107,24 @@ inline void list_foreach(const list_t *li, void f(void *)) {
 
 
 inline void *list_filter(const list_t *li,
-                         void (*pred)(const void *,
-                                      const void *),
-                         void *arg) {
+                         const void *key,
+                         bool (*pred)(const void *,
+                                      const void *)) {
+    /* #warning "__func__@__LINE__ not implemented"; */
     UNIMPLEMENTED;
 }
 
 
-inline void *list_find(const list_t *li, const void *key,
-                       void pred(const void *,
-                                 const void *),
-                       void *arg) {
-    UNIMPLEMENTED;
+inline void *list_find(const list_t *li,
+                       const void *key,
+                       bool pred(const void *,
+                                 const void *)) {
+    LIST_INIT_ERR(li);
+    LIST_FOR(i, li)
+    {
+        if (pred(key, i->data)) {
+            return i->data;
+        }
+    }
+    return NULL;
 }

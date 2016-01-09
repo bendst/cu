@@ -79,9 +79,9 @@ inline void vector_del(vector_t *v) {
 
 
 inline void vector_clear(vector_t *v, void (*df)(void *)) {
-    if(df == NULL){
-        memset(v->data, 0, sizeof(void *)*v->count);
-    }else {
+    if (df == NULL) {
+        memset(v->data, 0, sizeof(void *) * v->count);
+    } else {
         vector_foreach(v, df);
     }
     v->count = 0;
@@ -99,6 +99,21 @@ inline bool vector_contains(const vector_t *v, const void *key, int (*pred)(
                                 const void *)) {
     VECTOR_NOT_INIT(v);
     return bsearch(key, v->data, v->count, sizeof(void *), pred) != NULL;
+}
+
+
+inline void *vector_find(const vector_t *v, const void *key, bool (*pred)(
+                             const void *,
+                             const void *)) {
+    VECTOR_NOT_INIT(v);
+    void *item = NULL;
+    for (uint32_t i = 0; i < v->count; i++) {
+        item = vector_get(v, i);
+        if (pred(key, item)) {
+            return item;
+        }
+    }
+    return NULL;
 }
 
 

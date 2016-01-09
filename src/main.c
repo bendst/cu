@@ -16,9 +16,13 @@ int reverse_order(const void *a, const void *b) {
     return bint - aint;
 }
 
-int has_int(const void *a, const void *b){
+
+int has_int(const void *a, const void *b) {
     return memcmp(a, *(void **)b, sizeof(int32_t));
 }
+
+
+
 
 int main(int argc, char const *argv[]) {
     vector_t *v1 = vector_new();
@@ -38,16 +42,16 @@ int main(int argc, char const *argv[]) {
 
     int key = 21;
     int result = vector_contains(v1, &key, has_int);
-    printf("HAS %d %d\n",key, result);
+    printf("HAS %d %d\n", key, result);
 
 
     key = 5;
     result = vector_contains(v1, &key, has_int);
-    printf("HAS %d %d\n",key, result);
+    printf("HAS %d %d\n", key, result);
 
 
     vector_sort(v1, reverse_order);
-    printf("sort\n" );
+    printf("sort\n");
     vector_del_at(v1, 2, NULL);
     vector_foreach(v1, print);
 
@@ -65,7 +69,7 @@ int main(int argc, char const *argv[]) {
 
     list_foreach(l1, print);
     list_del(l1);
-    //list_filter(l1, NULL, NULL);
-    //list_find(NULL, NULL, NULL);
+    /* list_filter(l1, NULL, NULL); */
+    /* list_find(NULL, NULL, NULL); */
     return 0;
 }
