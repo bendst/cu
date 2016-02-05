@@ -27,10 +27,10 @@ int has_int(const void *a, const void *b) {
 int main(int argc, char const *argv[]) {
     vector_t *v1 = vector_new();
 
-    int32_t array[20] = {
+    int32_t array[40] = {
         0
     };
-    for (size_t i = 0; i < 20; i++) {
+    for (size_t i = 0; i < 40; i++) {
         array[i] = i;
     }
     for (size_t i = 0; i < 20; i++) {
@@ -58,6 +58,20 @@ int main(int argc, char const *argv[]) {
 
     vector_del(v1);
 
+
+    list_t l2 = LIST_INIT;
+    printf("%p %p %p\n", &l2, l2.head, l2.tail );
+    printf("list size: %ld\n", l2.size);
+    for (size_t i = 21; i < 40; i++) {
+        list_append(&l2, &array[i]);
+    }
+    printf("list size: %ld\n", l2.size);
+
+
+    list_foreach(&l2, print);
+    LIST_DEL(l2, NULL);
+    //printf("%p %p %p\n",&l2, l2.head, l2.tail );
+    exit(0);
 
     list_t *l1 = list_new();
     printf("list size: %ld\n", l1->size);

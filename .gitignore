@@ -28,5 +28,8 @@
 *.x86_64
 *.hex
 
-# Debug files
+# Debug
+testfiles
 *.dSYM/
+bin
+bin/*

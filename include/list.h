@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CULIST_H_
+#define  CULIST_H_
 #include <stdbool.h>
 #include <stdint.h>
 
@@ -14,11 +15,14 @@ typedef struct {
     uint64_t size;
 } list_t;
 
+
+
 /**
  * create a new list
  * @return a new list_t
  */
 extern void *list_new();
+
 
 
 /**
@@ -117,6 +121,17 @@ extern void *list_find(const list_t *li,
  *---------------------------------------------------------------------------
  */
 
- #define LIST_FOR(IT, L) struct listnode_t *IT = NULL; for (IT = L->head; \
+#define LIST_FOR(IT, L) struct listnode_t *IT = NULL; for (IT = L->head; \
                                                             IT != NULL; \
                                                             IT = IT->next)
+#define LIST_INIT {.head = calloc(1, sizeof(listnode_t)),\
+                    .tail = calloc(1, sizeof(listnode_t)),\
+                    .size = 0}
+
+#define LIST_DEL(L, FN) list_clear(&L, FN); struct listnode_t *IT = NULL;\
+    for (IT = L.head; IT != NULL; IT = IT->next) {\
+        free(IT->prev); \
+    } \
+    free(L.tail);
+
+#endif // CULIST_H_

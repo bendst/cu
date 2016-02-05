@@ -10,7 +10,6 @@ $(BIN): obj/main.o  $(LIBRARY)
 
 $(LIBRARY): obj/vector.o obj/list.o
 	$(AR) rs $@ $^
-	@cp include/cu.h bin/
 
 obj/%.o: src/%.c
 	$(CC) $(INCLUDE) $(CFLAGS) -c $< -o $@
