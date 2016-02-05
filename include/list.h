@@ -15,6 +15,19 @@ typedef struct {
     uint64_t size;
 } list_t;
 
+#define LIST_FOR(IT, L) struct listnode_t *IT = NULL; for (IT = L->head; \
+                                                           IT != NULL; \
+                                                           IT = IT->next)
+#define LIST_INIT {.head = NULL, \
+                   .tail = NULL, \
+                   .size = 0}
+
+#define LIST_DEL(L, FN) list_clear(&L, FN); struct listnode_t *IT = NULL; \
+    for (IT = L.head; IT != NULL; IT = IT->next) { \
+        free(IT->prev); \
+    } \
+    free(L.tail);
+
 
 /**
  * create a new list
@@ -112,24 +125,5 @@ extern void *list_find(const list_t *li,
                        bool (*pred)(const void *,
                                     const void *));
 
-
-/*
- *---------------------------------------------------------------------------
- * Helper macros
- *---------------------------------------------------------------------------
- */
-
-#define LIST_FOR(IT, L) struct listnode_t *IT = NULL; for (IT = L->head; \
-                                                           IT != NULL; \
-                                                           IT = IT->next)
-#define LIST_INIT {.head = calloc(1, sizeof(listnode_t)), \
-                   .tail = calloc(1, sizeof(listnode_t)), \
-                   .size = 0}
-
-#define LIST_DEL(L, FN) list_clear(&L, FN); struct listnode_t *IT = NULL; \
-    for (IT = L.head; IT != NULL; IT = IT->next) { \
-        free(IT->prev); \
-    } \
-    free(L.tail);
 
 #endif /* CULIST_H_ */

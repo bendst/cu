@@ -65,7 +65,11 @@ extern void vector_foreach(const vector_t *v, void (*f)(void *));
  **/
 extern void vector_del(vector_t *v);
 
-
+/**
+ * clearing a vector, in case that df is NULL every entry is set to 0
+ * @param v  vector to clear
+ * @param df deleting function for heap allocated data
+ */
 extern void vector_clear(vector_t *v, void (*df)(void *));
 
 
