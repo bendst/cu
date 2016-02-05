@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CUVECTOR_H_
+#define CUVECTOR_H_
 #include <stdint.h>
 #include <stdbool.h>
 
@@ -111,3 +112,6 @@ extern void *vector_find(const vector_t *v,
  * @param pred predicate function
  */
 extern void vector_sort(vector_t *v, int (*pred)(const void *, const void *));
+
+
+#endif /*CUVECTOR_H_ */

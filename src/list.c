@@ -1,5 +1,7 @@
-#include "cu.h"
+#include "list.h"
 #include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 #define LIST_INIT_ERR(L) if (L == \
                              NULL) {fprintf(stderr, "list not initalized"); \
