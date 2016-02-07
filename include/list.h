@@ -1,7 +1,7 @@
 #ifndef CULIST_H_
 #define  CULIST_H_
 #include <stdbool.h>
-#include <stdint.h>
+#include <stdlib.h>
 
 typedef struct listnode_t {
     void *data;
@@ -12,7 +12,7 @@ typedef struct listnode_t {
 typedef struct {
     listnode_t *head;
     listnode_t *tail;
-    uint64_t size;
+    size_t size;
 } list_t;
 
 #define LIST_FOR(IT, L) struct listnode_t *IT = NULL; for (IT = L->head; \
@@ -73,8 +73,21 @@ extern void list_clear_del(list_t *li, void (*df)(void *));
  * @param li   list to append to
  * @param data data to append
  */
-extern void list_append(list_t *li, void *data);
+extern void list_push_back(list_t *li, void *data);
 
+/**
+ * Prepend an element to the list
+ * @param li   list to prepend to
+ * @param data data to prepend
+ */
+extern void list_push_front(list_t *li, void *data);
+
+/**
+ * Append a other list to the first one. No copys are made
+ * @param li    list to append to
+ * @param other other list
+ */
+extern void list_append(list_t *li, list_t *other);
 
 /**
  * check whether the list is empty
@@ -89,7 +102,7 @@ extern bool list_is_empty(const list_t *li);
  * @param  li list to check
  * @return    returns the list length
  */
-extern uint64_t list_len(const list_t *li);
+extern size_t list_len(const list_t *li);
 
 
 /**
@@ -109,8 +122,7 @@ extern void list_foreach(const list_t *li, void (*f)(void *));
  */
 extern void *list_filter(const list_t *li,
                          const void *key,
-                         bool (*pred)(const void *,
-                                      const void *));
+                         bool (*pred)(const void *, const void *));
 
 
 /**
@@ -122,8 +134,7 @@ extern void *list_filter(const list_t *li,
  */
 extern void *list_find(const list_t *li,
                        const void *key,
-                       bool (*pred)(const void *,
-                                    const void *));
+                       bool (*pred)(const void *, const void *));
 
 
 #endif /* CULIST_H_ */

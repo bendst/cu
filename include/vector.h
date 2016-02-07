@@ -33,7 +33,7 @@ extern vector_t *vector_with_cap(uint32_t n);
  *  @param list arrayList to which the data should be added
  *  @param data pointer to add
  **/
-extern void vector_append(vector_t *v, void *data);
+extern void vector_push(vector_t *v, void *data);
 
 
 /**

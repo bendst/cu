@@ -1,6 +1,5 @@
 #include "list.h"
 #include <string.h>
-#include <stdlib.h>
 #include <stdio.h>
 
 #define LIST_INIT_ERR(L) if (L == \
@@ -17,12 +16,12 @@ inline void *list_clone(const list_t *li, void *(*clonef)(void *)) {
     if (clonef == NULL) {
         LIST_FOR(i, li)
         {
-            list_append(clone, i->data);
+            list_push_back(clone, i->data);
         }
     } else {
         LIST_FOR(i, li)
         {
-            list_append(clone, clonef(i->data));
+            list_push_back(clone, clonef(i->data));
         }
     }
 
@@ -65,7 +64,7 @@ inline void list_clear_del(list_t *li, void df(void *)) {
 }
 
 
-inline void list_append(list_t *li, void *data) {
+inline void list_push_back(list_t *li, void *data) {
     LIST_INIT_ERR(li);
 
     struct listnode_t *tail = calloc(1, sizeof(struct listnode_t));
@@ -85,12 +84,41 @@ inline void list_append(list_t *li, void *data) {
 }
 
 
+inline void list_push_front(list_t *li, void *data) {
+    LIST_INIT_ERR(li);
+
+    struct listnode_t *head = calloc(1, sizeof(struct listnode_t));
+    head->data = data;
+    head->next = li->head;
+    head->prev = NULL;
+
+    if (list_is_empty(li)) {
+        li->head = head;
+        li->tail = head;
+    } else {
+        li->head->prev = head;
+        li->head = head;
+    }
+    li->size = li->size + 1;
+}
+
+
+inline void list_append(list_t *li, list_t *other){
+    LIST_INIT_ERR(li);
+    LIST_INIT_ERR(other);
+
+    li->tail->next = other->head;
+    other->head->prev = li->tail;
+    li->tail = other->head;
+    li->size = li->size + other->size;
+}
+
 inline bool list_is_empty(const list_t *li) {
     return list_len(li) == 0;
 }
 
 
-inline uint64_t list_len(const list_t *li) {
+inline size_t list_len(const list_t *li) {
     if (li == NULL) {
         fprintf(stderr, "list not initialized\n");
         return 0;
@@ -110,13 +138,13 @@ inline void list_foreach(const list_t *li, void f(void *)) {
 
 inline void *list_filter(const list_t *li,
                          const void *key,
-                         bool (*pred)(const void *,
-                                      const void *)) {
+                         bool (*pred)(const void *, const void *)) {
     LIST_INIT_ERR(li);
     list_t *filter_copy = list_new();
-    LIST_FOR(i, li){
-        if(pred(key, i->data)){
-            list_append(filter_copy, i->data);
+    LIST_FOR(i, li)
+    {
+        if (pred(key, i->data)) {
+            list_push_back(filter_copy, i->data);
         }
     }
     return filter_copy;
@@ -126,8 +154,7 @@ inline void *list_filter(const list_t *li,
 
 inline void *list_find(const list_t *li,
                        const void *key,
-                       bool pred(const void *,
-                                 const void *)) {
+                       bool pred(const void *, const void *)) {
     LIST_INIT_ERR(li);
     LIST_FOR(i, li)
     {

@@ -35,7 +35,7 @@ int main(int argc, char const *argv[]) {
         array[i] = i;
     }
     for (size_t i = 0; i < 20; i++) {
-        vector_append(v1, &array[i]);
+        vector_push_back(v1, &array[i]);
     }
 
     vector_foreach(v1, print);
@@ -64,7 +64,7 @@ int main(int argc, char const *argv[]) {
     printf("%p %p %p\n", &l2, l2.head, l2.tail );
     printf("list size: %ld\n", l2.size);
     for (size_t i = 21; i < 40; i++) {
-        list_append(&l2, &array[i]);
+        list_push_back(&l2, &array[i]);
     }
     printf("list size: %ld\n", l2.size);
 
@@ -77,7 +77,7 @@ int main(int argc, char const *argv[]) {
     list_t *l1 = list_new();
     printf("list size: %ld\n", l1->size);
     for (size_t i = 0; i < 20; i++) {
-        list_append(l1, &array[i]);
+        list_push_back(l1, &array[i]);
     }
     printf("list size: %ld\n", l1->size);
 

@@ -22,7 +22,7 @@ inline vector_t *vector_with_cap(uint32_t n) {
 }
 
 
-inline void vector_append(vector_t *v, void *data) {
+inline void vector_push(vector_t *v, void *data) {
     VECTOR_NOT_INIT(v);
     if (v->memsize == 0 || !v) {
         v = vector_with_cap(10);
