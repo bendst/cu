@@ -6,3 +6,6 @@ Enough of writing the same data structures over and over and over again.
 
 # License
 [MIT](./LICENSE.md)
+
+# Documentation
+[documentation](https://bendst.github.io/cu/html/index.html)
