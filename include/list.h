@@ -3,25 +3,57 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
+/**
+ * @file list.h
+ * Interface of a dopply linked list
+ */
+
+/**
+ * node of the dopply linked list
+ */
 typedef struct listnode_t {
+    /** data a node**/
     void *data;
+    /** reference to the next node **/
     struct listnode_t *next;
+    /** reference to the previous node **/
     struct listnode_t *prev;
 } listnode_t;
 
+/**
+ * @brief holds the reference to the head and tail of the list
+ */
 typedef struct {
+    /** head of the list_t **/
     listnode_t *head;
+    /** tail of the list_t**/
     listnode_t *tail;
+    /** counts the node within the list_t **/
     size_t size;
 } list_t;
 
+/**
+ * Iterate over the content of the list_t
+ * @param  IT name of the temporary variable
+ * @param  L  list_t to iterate over
+ * @return    yields a element of the list_t, will be accesable through IT->data
+ */
 #define LIST_FOR(IT, L) struct listnode_t *IT = NULL; for (IT = L->head; \
                                                            IT != NULL; \
                                                            IT = IT->next)
+
+/**
+ * create a list_t on the stack
+ */
 #define LIST_INIT {.head = NULL, \
                    .tail = NULL, \
                    .size = 0}
 
+/**
+ * clear and delete a list_t which was created on the stack
+ * @param  L  list_t to delete
+ * @param  FN function with which the content of the list can be deleted
+ */
 #define LIST_DEL(L, FN) list_clear(&L, FN); struct listnode_t *IT = NULL; \
     for (IT = L.head; IT != NULL; IT = IT->next) { \
         free(IT->prev); \
@@ -83,9 +115,9 @@ extern void list_push_back(list_t *li, void *data);
 extern void list_push_front(list_t *li, void *data);
 
 /**
- * Append a other list to the first one. No copys are made
- * @param li    list to append to
- * @param other other list
+ * Append a oth
+ * @param li    [description]
+ * @param other [description]
  */
 extern void list_append(list_t *li, list_t *other);
 
@@ -122,7 +154,8 @@ extern void list_foreach(const list_t *li, void (*f)(void *));
  */
 extern void *list_filter(const list_t *li,
                          const void *key,
-                         bool (*pred)(const void *, const void *));
+                         bool (*pred)(const void *,
+                                      const void *));
 
 
 /**
@@ -134,7 +167,8 @@ extern void *list_filter(const list_t *li,
  */
 extern void *list_find(const list_t *li,
                        const void *key,
-                       bool (*pred)(const void *, const void *));
+                       bool (*pred)(const void *,
+                                    const void *));
 
 
 #endif /* CULIST_H_ */

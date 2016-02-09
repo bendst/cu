@@ -2,24 +2,35 @@
 #define CUVECTOR_H_
 #include <stdlib.h>
 #include <stdbool.h>
+/**
+ * @file vector.h
+ */
 
 /** @brief vector
- *
+ * dynamically growing array
  */
 typedef struct  {
     /** data **/
     void **data;
     /** allocated memory **/
     size_t memsize;
-    /** member counter **/
+    /** element counter **/
     size_t count;
 } vector_t;
 
-
+/**
+ * Initialize a vector_t on the stack
+ * @param  N size of the vector
+ * @return   returns a vector_t
+ */
 #define VECTOR_INIT(N) {.data = calloc(N, sizeof(void *)), \
                         .memsize = N, \
                         .count = 0 }
-
+/**
+ * delete a on stack allocated vector_t
+ * @param  V  vector_t to delete
+ * @param  FN function to delete the content of the vector_t
+ */
 #define VECTOR_DEL(V, FN) vector_clear(&V, FN); free(V.data);
 
 /** creates a new empty vector of the size 10
