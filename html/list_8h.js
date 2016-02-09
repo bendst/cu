@@ -5,7 +5,6 @@ var list_8h =
     [ "LIST_DEL", "list_8h.html#af189447b664061437606b4ef3f19f95f", null ],
     [ "LIST_FOR", "list_8h.html#ae92b27621be9d7d834b77bfadec45d2d", null ],
     [ "LIST_INIT", "list_8h.html#ae6ef4c060e065a7097d58ed61ae469a9", null ],
-    [ "listnode_t", "list_8h.html#a89dab12ae181a55f98a292e5ecf2f26b", null ],
     [ "list_append", "list_8h.html#aa0c7d5dc5c56e923b313f8d439e3e3e6", null ],
     [ "list_clear", "list_8h.html#aec32707a901a95566d7380b33c400eba", null ],
     [ "list_clear_del", "list_8h.html#a9cef7fe487b993c058474ab172ede11d", null ],

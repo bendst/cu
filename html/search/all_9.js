@@ -4,7 +4,7 @@ var searchData=
   ['vector_5fclear',['vector_clear',['../vector_8h.html#a55f95082dace262b491a05c61b497761',1,'vector.h']]],
   ['vector_5fclear_5fdel',['vector_clear_del',['../vector_8h.html#a8f1667e167881e3a357e3bb69e9b1e9a',1,'vector.h']]],
   ['vector_5fcontains',['vector_contains',['../vector_8h.html#ac516ab3950c49c6a42c809f03a0bd13b',1,'vector.h']]],
-  ['vector_5fdel',['vector_del',['../vector_8h.html#a616d5cdefb742090dfb7433a6f1328b2',1,'vector_del(vector_t *v):&#160;vector.h'],['../vector_8h.html#ae19276fb9aac7ff131ca11ad6bc32545',1,'VECTOR_DEL():&#160;vector.h']]],
+  ['vector_5fdel',['VECTOR_DEL',['../vector_8h.html#ae19276fb9aac7ff131ca11ad6bc32545',1,'VECTOR_DEL():&#160;vector.h'],['../vector_8h.html#a616d5cdefb742090dfb7433a6f1328b2',1,'vector_del(vector_t *v):&#160;vector.h']]],
   ['vector_5ffind',['vector_find',['../vector_8h.html#a8d73190a8f9a8e573f725c7465fcc3aa',1,'vector.h']]],
   ['vector_5fforeach',['vector_foreach',['../vector_8h.html#a4cc5acaac48f45ed6de41d6ae96e07ca',1,'vector.h']]],
   ['vector_5fget',['vector_get',['../vector_8h.html#a210e4311f2ec578c745fa02b4b0dd6b9',1,'vector.h']]],

@@ -5,8 +5,7 @@ var indexSectionsWithContent =
   2: "lv",
   3: "lv",
   4: "cdhmnpst",
-  5: "l",
-  6: "lv"
+  5: "lv"
 };
 
 var indexSectionNames =
@@ -16,8 +15,7 @@ var indexSectionNames =
   2: "files",
   3: "functions",
   4: "variables",
-  5: "typedefs",
-  6: "defines"
+  5: "defines"
 };
 
 var indexSectionLabels =
@@ -27,7 +25,6 @@ var indexSectionLabels =
   2: "Files",
   3: "Functions",
   4: "Variables",
-  5: "Typedefs",
-  6: "Macros"
+  5: "Macros"
 };
 
