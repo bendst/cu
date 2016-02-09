@@ -87,8 +87,9 @@ extern void *vector_get(const vector_t *v, size_t index);
 extern void vector_foreach(const vector_t *v, void (*f)(void *));
 
 
-/** delete the  vector no element in the structure is deleted
- *  @param list to delete
+/** delete the vector and free allocated memory.
+ * 	The elements of the vector will not be freed.
+ *  @param v vector to delete
  **/
 extern void vector_del(vector_t *v);
 
