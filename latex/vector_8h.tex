@@ -1,0 +1,318 @@
+\hypertarget{vector_8h}{}\section{include/vector.h File Reference}
+\label{vector_8h}\index{include/vector.\+h@{include/vector.\+h}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$stdbool.\+h$>$}\\*
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structvector__t}{vector\+\_\+t}
+\begin{DoxyCompactList}\small\item\em vector dynamically growing array \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{vector_8h_a36b97fa18ea393f2ead085de8cb88ec6}{V\+E\+C\+T\+O\+R\+\_\+\+I\+N\+IT}(N)
+\item 
+\#define \hyperlink{vector_8h_ae19276fb9aac7ff131ca11ad6bc32545}{V\+E\+C\+T\+O\+R\+\_\+\+D\+EL}(V,  FN)~\hyperlink{vector_8h_a55f95082dace262b491a05c61b497761}{vector\+\_\+clear}(\&V, FN); free(V.\+data);
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structvector__t}{vector\+\_\+t} $\ast$ \hyperlink{vector_8h_a486d233830c907a99c33ce06bc875d0b}{vector\+\_\+new} ()
+\item 
+\hyperlink{structvector__t}{vector\+\_\+t} $\ast$ \hyperlink{vector_8h_a359ee1a41d7a71987c2314e78ca08c6c}{vector\+\_\+with\+\_\+cap} (size\+\_\+t n)
+\item 
+void \hyperlink{vector_8h_ac679d22478bc67a31f9c72bb13defa69}{vector\+\_\+insert} (\hyperlink{structvector__t}{vector\+\_\+t} $\ast$v, size\+\_\+t index, void $\ast$data)
+\item 
+void \hyperlink{vector_8h_a692cfdd3fd5ef36105aef9148971c21a}{vector\+\_\+push} (\hyperlink{structvector__t}{vector\+\_\+t} $\ast$v, void $\ast$data)
+\item 
+void \hyperlink{vector_8h_a2ad49ac31003d73b27959508c8c1f6dc}{vector\+\_\+pop} (\hyperlink{structvector__t}{vector\+\_\+t} $\ast$v, void($\ast$df)(void $\ast$))
+\item 
+void \hyperlink{vector_8h_a63ea6832a93d90ccf54be7144819cb3a}{vector\+\_\+remove} (\hyperlink{structvector__t}{vector\+\_\+t} $\ast$v, size\+\_\+t index, void($\ast$df)(void $\ast$))
+\item 
+void $\ast$ \hyperlink{vector_8h_a210e4311f2ec578c745fa02b4b0dd6b9}{vector\+\_\+get} (const \hyperlink{structvector__t}{vector\+\_\+t} $\ast$v, size\+\_\+t index)
+\item 
+void \hyperlink{vector_8h_a4cc5acaac48f45ed6de41d6ae96e07ca}{vector\+\_\+foreach} (const \hyperlink{structvector__t}{vector\+\_\+t} $\ast$v, void($\ast$f)(void $\ast$))
+\item 
+void \hyperlink{vector_8h_a616d5cdefb742090dfb7433a6f1328b2}{vector\+\_\+del} (\hyperlink{structvector__t}{vector\+\_\+t} $\ast$v)
+\item 
+void \hyperlink{vector_8h_a55f95082dace262b491a05c61b497761}{vector\+\_\+clear} (\hyperlink{structvector__t}{vector\+\_\+t} $\ast$v, void($\ast$df)(void $\ast$))
+\item 
+void \hyperlink{vector_8h_a8f1667e167881e3a357e3bb69e9b1e9a}{vector\+\_\+clear\+\_\+del} (\hyperlink{structvector__t}{vector\+\_\+t} $\ast$v, void($\ast$df)(void $\ast$))
+\item 
+bool \hyperlink{vector_8h_ac516ab3950c49c6a42c809f03a0bd13b}{vector\+\_\+contains} (const \hyperlink{structvector__t}{vector\+\_\+t} $\ast$v, const void $\ast$key, int($\ast$pred)(const void $\ast$, const void $\ast$))
+\item 
+void $\ast$ \hyperlink{vector_8h_a8d73190a8f9a8e573f725c7465fcc3aa}{vector\+\_\+find} (const \hyperlink{structvector__t}{vector\+\_\+t} $\ast$v, const void $\ast$key, bool($\ast$pred)(const void $\ast$, const void $\ast$))
+\item 
+void \hyperlink{vector_8h_aa5ed86421adb9700a4be77450200c349}{vector\+\_\+sort} (\hyperlink{structvector__t}{vector\+\_\+t} $\ast$v, int($\ast$pred)(const void $\ast$, const void $\ast$))
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{vector.\+h@{vector.\+h}!V\+E\+C\+T\+O\+R\+\_\+\+D\+EL@{V\+E\+C\+T\+O\+R\+\_\+\+D\+EL}}
+\index{V\+E\+C\+T\+O\+R\+\_\+\+D\+EL@{V\+E\+C\+T\+O\+R\+\_\+\+D\+EL}!vector.\+h@{vector.\+h}}
+\subsubsection[{\texorpdfstring{V\+E\+C\+T\+O\+R\+\_\+\+D\+EL}{VECTOR_DEL}}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+E\+C\+T\+O\+R\+\_\+\+D\+EL(
+\begin{DoxyParamCaption}
+\item[{}]{V, }
+\item[{}]{FN}
+\end{DoxyParamCaption}
+)~{\bf vector\+\_\+clear}(\&V, FN); free(V.\+data);}\hypertarget{vector_8h_ae19276fb9aac7ff131ca11ad6bc32545}{}\label{vector_8h_ae19276fb9aac7ff131ca11ad6bc32545}
+delete a on stack allocated \hyperlink{structvector__t}{vector\+\_\+t} 
+\begin{DoxyParams}{Parameters}
+{\em V} & \hyperlink{structvector__t}{vector\+\_\+t} to delete \\
+\hline
+{\em FN} & function to delete the content of the \hyperlink{structvector__t}{vector\+\_\+t} \\
+\hline
+\end{DoxyParams}
+\index{vector.\+h@{vector.\+h}!V\+E\+C\+T\+O\+R\+\_\+\+I\+N\+IT@{V\+E\+C\+T\+O\+R\+\_\+\+I\+N\+IT}}
+\index{V\+E\+C\+T\+O\+R\+\_\+\+I\+N\+IT@{V\+E\+C\+T\+O\+R\+\_\+\+I\+N\+IT}!vector.\+h@{vector.\+h}}
+\subsubsection[{\texorpdfstring{V\+E\+C\+T\+O\+R\+\_\+\+I\+N\+IT}{VECTOR_INIT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+E\+C\+T\+O\+R\+\_\+\+I\+N\+IT(
+\begin{DoxyParamCaption}
+\item[{}]{N}
+\end{DoxyParamCaption}
+)}\hypertarget{vector_8h_a36b97fa18ea393f2ead085de8cb88ec6}{}\label{vector_8h_a36b97fa18ea393f2ead085de8cb88ec6}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\{.data = calloc(N, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{void} *)), \(\backslash\)
+                        .memsize = N, \(\backslash\)
+                        .count = 0 \}
+\end{DoxyCode}
+Initialize a \hyperlink{structvector__t}{vector\+\_\+t} on the stack 
+\begin{DoxyParams}{Parameters}
+{\em N} & size of the vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns a \hyperlink{structvector__t}{vector\+\_\+t} 
+\end{DoxyReturn}
+
+
+\subsection{Function Documentation}
+\index{vector.\+h@{vector.\+h}!vector\+\_\+clear@{vector\+\_\+clear}}
+\index{vector\+\_\+clear@{vector\+\_\+clear}!vector.\+h@{vector.\+h}}
+\subsubsection[{\texorpdfstring{vector\+\_\+clear(vector\+\_\+t $\ast$v, void($\ast$df)(void $\ast$))}{vector_clear(vector_t *v, void(*df)(void *))}}]{\setlength{\rightskip}{0pt plus 5cm}void vector\+\_\+clear (
+\begin{DoxyParamCaption}
+\item[{{\bf vector\+\_\+t} $\ast$}]{v, }
+\item[{void($\ast$)(void $\ast$)}]{df}
+\end{DoxyParamCaption}
+)}\hypertarget{vector_8h_a55f95082dace262b491a05c61b497761}{}\label{vector_8h_a55f95082dace262b491a05c61b497761}
+clearing a vector, in case that df is N\+U\+LL every entry is set to 0 
+\begin{DoxyParams}{Parameters}
+{\em v} & vector to clear \\
+\hline
+{\em df} & deleting function for heap allocated data \\
+\hline
+\end{DoxyParams}
+\index{vector.\+h@{vector.\+h}!vector\+\_\+clear\+\_\+del@{vector\+\_\+clear\+\_\+del}}
+\index{vector\+\_\+clear\+\_\+del@{vector\+\_\+clear\+\_\+del}!vector.\+h@{vector.\+h}}
+\subsubsection[{\texorpdfstring{vector\+\_\+clear\+\_\+del(vector\+\_\+t $\ast$v, void($\ast$df)(void $\ast$))}{vector_clear_del(vector_t *v, void(*df)(void *))}}]{\setlength{\rightskip}{0pt plus 5cm}void vector\+\_\+clear\+\_\+del (
+\begin{DoxyParamCaption}
+\item[{{\bf vector\+\_\+t} $\ast$}]{v, }
+\item[{void($\ast$)(void $\ast$)}]{df}
+\end{DoxyParamCaption}
+)}\hypertarget{vector_8h_a8f1667e167881e3a357e3bb69e9b1e9a}{}\label{vector_8h_a8f1667e167881e3a357e3bb69e9b1e9a}
+delete the vector and its content
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & to delete \\
+\hline
+{\em df} & function with which the data should be deleted \\
+\hline
+\end{DoxyParams}
+\index{vector.\+h@{vector.\+h}!vector\+\_\+contains@{vector\+\_\+contains}}
+\index{vector\+\_\+contains@{vector\+\_\+contains}!vector.\+h@{vector.\+h}}
+\subsubsection[{\texorpdfstring{vector\+\_\+contains(const vector\+\_\+t $\ast$v, const void $\ast$key, int($\ast$pred)(const void $\ast$, const void $\ast$))}{vector_contains(const vector_t *v, const void *key, int(*pred)(const void *, const void *))}}]{\setlength{\rightskip}{0pt plus 5cm}bool vector\+\_\+contains (
+\begin{DoxyParamCaption}
+\item[{const {\bf vector\+\_\+t} $\ast$}]{v, }
+\item[{const void $\ast$}]{key, }
+\item[{int($\ast$)(const void $\ast$, const void $\ast$)}]{pred}
+\end{DoxyParamCaption}
+)}\hypertarget{vector_8h_ac516ab3950c49c6a42c809f03a0bd13b}{}\label{vector_8h_ac516ab3950c49c6a42c809f03a0bd13b}
+Check whether a element is in the vector. Example for predicate functions\+: for Integer on stack\+: return memcmp(a, $\ast$(void $\ast$$\ast$)b, sizeof(int32\+\_\+t))
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & vector to search \\
+\hline
+{\em key} & item to find \\
+\hline
+{\em pred} & predicate function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns true on succuss and false on failure 
+\end{DoxyReturn}
+\index{vector.\+h@{vector.\+h}!vector\+\_\+del@{vector\+\_\+del}}
+\index{vector\+\_\+del@{vector\+\_\+del}!vector.\+h@{vector.\+h}}
+\subsubsection[{\texorpdfstring{vector\+\_\+del(vector\+\_\+t $\ast$v)}{vector_del(vector_t *v)}}]{\setlength{\rightskip}{0pt plus 5cm}void vector\+\_\+del (
+\begin{DoxyParamCaption}
+\item[{{\bf vector\+\_\+t} $\ast$}]{v}
+\end{DoxyParamCaption}
+)}\hypertarget{vector_8h_a616d5cdefb742090dfb7433a6f1328b2}{}\label{vector_8h_a616d5cdefb742090dfb7433a6f1328b2}
+delete the vector and free allocated memory. The elements of the vector will not be freed. 
+\begin{DoxyParams}{Parameters}
+{\em v} & vector to delete \\
+\hline
+\end{DoxyParams}
+\index{vector.\+h@{vector.\+h}!vector\+\_\+find@{vector\+\_\+find}}
+\index{vector\+\_\+find@{vector\+\_\+find}!vector.\+h@{vector.\+h}}
+\subsubsection[{\texorpdfstring{vector\+\_\+find(const vector\+\_\+t $\ast$v, const void $\ast$key, bool($\ast$pred)(const void $\ast$, const void $\ast$))}{vector_find(const vector_t *v, const void *key, bool(*pred)(const void *, const void *))}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ vector\+\_\+find (
+\begin{DoxyParamCaption}
+\item[{const {\bf vector\+\_\+t} $\ast$}]{v, }
+\item[{const void $\ast$}]{key, }
+\item[{bool($\ast$)(const void $\ast$, const void $\ast$)}]{pred}
+\end{DoxyParamCaption}
+)}\hypertarget{vector_8h_a8d73190a8f9a8e573f725c7465fcc3aa}{}\label{vector_8h_a8d73190a8f9a8e573f725c7465fcc3aa}
+find an element in given vector 
+\begin{DoxyParams}{Parameters}
+{\em v} & vector to search \\
+\hline
+{\em key} & key property \\
+\hline
+{\em pred} & predicate function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns the item found, N\+U\+LL is returned in case of an error 
+\end{DoxyReturn}
+\index{vector.\+h@{vector.\+h}!vector\+\_\+foreach@{vector\+\_\+foreach}}
+\index{vector\+\_\+foreach@{vector\+\_\+foreach}!vector.\+h@{vector.\+h}}
+\subsubsection[{\texorpdfstring{vector\+\_\+foreach(const vector\+\_\+t $\ast$v, void($\ast$f)(void $\ast$))}{vector_foreach(const vector_t *v, void(*f)(void *))}}]{\setlength{\rightskip}{0pt plus 5cm}void vector\+\_\+foreach (
+\begin{DoxyParamCaption}
+\item[{const {\bf vector\+\_\+t} $\ast$}]{v, }
+\item[{void($\ast$)(void $\ast$)}]{f}
+\end{DoxyParamCaption}
+)}\hypertarget{vector_8h_a4cc5acaac48f45ed6de41d6ae96e07ca}{}\label{vector_8h_a4cc5acaac48f45ed6de41d6ae96e07ca}
+apply the funtion f to every element in the vector 
+\begin{DoxyParams}{Parameters}
+{\em list} & vector to operate on \\
+\hline
+{\em f} & function to apply \\
+\hline
+\end{DoxyParams}
+\index{vector.\+h@{vector.\+h}!vector\+\_\+get@{vector\+\_\+get}}
+\index{vector\+\_\+get@{vector\+\_\+get}!vector.\+h@{vector.\+h}}
+\subsubsection[{\texorpdfstring{vector\+\_\+get(const vector\+\_\+t $\ast$v, size\+\_\+t index)}{vector_get(const vector_t *v, size_t index)}}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ vector\+\_\+get (
+\begin{DoxyParamCaption}
+\item[{const {\bf vector\+\_\+t} $\ast$}]{v, }
+\item[{size\+\_\+t}]{index}
+\end{DoxyParamCaption}
+)}\hypertarget{vector_8h_a210e4311f2ec578c745fa02b4b0dd6b9}{}\label{vector_8h_a210e4311f2ec578c745fa02b4b0dd6b9}
+returns the data of the index 
+\begin{DoxyParams}{Parameters}
+{\em list} & fetch the data of this array\+List \\
+\hline
+{\em i} & index to fetch \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns the pointer to the data 
+\end{DoxyReturn}
+\index{vector.\+h@{vector.\+h}!vector\+\_\+insert@{vector\+\_\+insert}}
+\index{vector\+\_\+insert@{vector\+\_\+insert}!vector.\+h@{vector.\+h}}
+\subsubsection[{\texorpdfstring{vector\+\_\+insert(vector\+\_\+t $\ast$v, size\+\_\+t index, void $\ast$data)}{vector_insert(vector_t *v, size_t index, void *data)}}]{\setlength{\rightskip}{0pt plus 5cm}void vector\+\_\+insert (
+\begin{DoxyParamCaption}
+\item[{{\bf vector\+\_\+t} $\ast$}]{v, }
+\item[{size\+\_\+t}]{index, }
+\item[{void $\ast$}]{data}
+\end{DoxyParamCaption}
+)}\hypertarget{vector_8h_ac679d22478bc67a31f9c72bb13defa69}{}\label{vector_8h_ac679d22478bc67a31f9c72bb13defa69}
+insert an element at given position, should the index be greater than the current vector size, the data is pushed to the end. The goal is it to avoid any fragmentation. 
+\begin{DoxyParams}{Parameters}
+{\em v} & vector \\
+\hline
+{\em index} & position to insert \\
+\hline
+{\em data} & data to insert \\
+\hline
+\end{DoxyParams}
+\index{vector.\+h@{vector.\+h}!vector\+\_\+new@{vector\+\_\+new}}
+\index{vector\+\_\+new@{vector\+\_\+new}!vector.\+h@{vector.\+h}}
+\subsubsection[{\texorpdfstring{vector\+\_\+new()}{vector_new()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf vector\+\_\+t}$\ast$ vector\+\_\+new (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{vector_8h_a486d233830c907a99c33ce06bc875d0b}{}\label{vector_8h_a486d233830c907a99c33ce06bc875d0b}
+creates a new empty vector of the size 10 \begin{DoxyReturn}{Returns}
+a new vector 
+\end{DoxyReturn}
+\index{vector.\+h@{vector.\+h}!vector\+\_\+pop@{vector\+\_\+pop}}
+\index{vector\+\_\+pop@{vector\+\_\+pop}!vector.\+h@{vector.\+h}}
+\subsubsection[{\texorpdfstring{vector\+\_\+pop(vector\+\_\+t $\ast$v, void($\ast$df)(void $\ast$))}{vector_pop(vector_t *v, void(*df)(void *))}}]{\setlength{\rightskip}{0pt plus 5cm}void vector\+\_\+pop (
+\begin{DoxyParamCaption}
+\item[{{\bf vector\+\_\+t} $\ast$}]{v, }
+\item[{void($\ast$)(void $\ast$)}]{df}
+\end{DoxyParamCaption}
+)}\hypertarget{vector_8h_a2ad49ac31003d73b27959508c8c1f6dc}{}\label{vector_8h_a2ad49ac31003d73b27959508c8c1f6dc}
+remove the last element from the vector 
+\begin{DoxyParams}{Parameters}
+{\em v} & vector to remove the element from \\
+\hline
+{\em df} & function to free the data, if N\+U\+LL is passed it is ignored \\
+\hline
+\end{DoxyParams}
+\index{vector.\+h@{vector.\+h}!vector\+\_\+push@{vector\+\_\+push}}
+\index{vector\+\_\+push@{vector\+\_\+push}!vector.\+h@{vector.\+h}}
+\subsubsection[{\texorpdfstring{vector\+\_\+push(vector\+\_\+t $\ast$v, void $\ast$data)}{vector_push(vector_t *v, void *data)}}]{\setlength{\rightskip}{0pt plus 5cm}void vector\+\_\+push (
+\begin{DoxyParamCaption}
+\item[{{\bf vector\+\_\+t} $\ast$}]{v, }
+\item[{void $\ast$}]{data}
+\end{DoxyParamCaption}
+)}\hypertarget{vector_8h_a692cfdd3fd5ef36105aef9148971c21a}{}\label{vector_8h_a692cfdd3fd5ef36105aef9148971c21a}
+appends a element to the vector 
+\begin{DoxyParams}{Parameters}
+{\em v} & array\+List to which the data should be appended \\
+\hline
+{\em data} & pointer to add \\
+\hline
+\end{DoxyParams}
+\index{vector.\+h@{vector.\+h}!vector\+\_\+remove@{vector\+\_\+remove}}
+\index{vector\+\_\+remove@{vector\+\_\+remove}!vector.\+h@{vector.\+h}}
+\subsubsection[{\texorpdfstring{vector\+\_\+remove(vector\+\_\+t $\ast$v, size\+\_\+t index, void($\ast$df)(void $\ast$))}{vector_remove(vector_t *v, size_t index, void(*df)(void *))}}]{\setlength{\rightskip}{0pt plus 5cm}void vector\+\_\+remove (
+\begin{DoxyParamCaption}
+\item[{{\bf vector\+\_\+t} $\ast$}]{v, }
+\item[{size\+\_\+t}]{index, }
+\item[{void($\ast$)(void $\ast$)}]{df}
+\end{DoxyParamCaption}
+)}\hypertarget{vector_8h_a63ea6832a93d90ccf54be7144819cb3a}{}\label{vector_8h_a63ea6832a93d90ccf54be7144819cb3a}
+delete a element from the vector 
+\begin{DoxyParams}{Parameters}
+{\em v} & vector \\
+\hline
+{\em index} & of the element to remove \\
+\hline
+{\em df} & deleting function for the given element. df is ignored if N\+U\+LL \\
+\hline
+\end{DoxyParams}
+\index{vector.\+h@{vector.\+h}!vector\+\_\+sort@{vector\+\_\+sort}}
+\index{vector\+\_\+sort@{vector\+\_\+sort}!vector.\+h@{vector.\+h}}
+\subsubsection[{\texorpdfstring{vector\+\_\+sort(vector\+\_\+t $\ast$v, int($\ast$pred)(const void $\ast$, const void $\ast$))}{vector_sort(vector_t *v, int(*pred)(const void *, const void *))}}]{\setlength{\rightskip}{0pt plus 5cm}void vector\+\_\+sort (
+\begin{DoxyParamCaption}
+\item[{{\bf vector\+\_\+t} $\ast$}]{v, }
+\item[{int($\ast$)(const void $\ast$, const void $\ast$)}]{pred}
+\end{DoxyParamCaption}
+)}\hypertarget{vector_8h_aa5ed86421adb9700a4be77450200c349}{}\label{vector_8h_aa5ed86421adb9700a4be77450200c349}
+Sort the vector with quicksort 
+\begin{DoxyParams}{Parameters}
+{\em v} & vector to sort \\
+\hline
+{\em pred} & predicate function \\
+\hline
+\end{DoxyParams}
+\index{vector.\+h@{vector.\+h}!vector\+\_\+with\+\_\+cap@{vector\+\_\+with\+\_\+cap}}
+\index{vector\+\_\+with\+\_\+cap@{vector\+\_\+with\+\_\+cap}!vector.\+h@{vector.\+h}}
+\subsubsection[{\texorpdfstring{vector\+\_\+with\+\_\+cap(size\+\_\+t n)}{vector_with_cap(size_t n)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf vector\+\_\+t}$\ast$ vector\+\_\+with\+\_\+cap (
+\begin{DoxyParamCaption}
+\item[{size\+\_\+t}]{n}
+\end{DoxyParamCaption}
+)}\hypertarget{vector_8h_a359ee1a41d7a71987c2314e78ca08c6c}{}\label{vector_8h_a359ee1a41d7a71987c2314e78ca08c6c}
+creates a empty vector of the size n 
+\begin{DoxyParams}{Parameters}
+{\em n} & size of the empty array \\
+\hline
+{\em returns} & a new vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a new vector 
+\end{DoxyReturn}
