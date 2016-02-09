@@ -8,7 +8,7 @@
 
 
 inline vector_t *vector_new() {
-    return vector_with_cap(10);
+    return vector_with_cap(8);
 }
 
 
@@ -22,7 +22,7 @@ inline vector_t *vector_with_cap(size_t n) {
 
 
 inline void vector_insert(vector_t *v, size_t index, void *data) {
-    #warning "vector_insert is not tested"
+    #warning not tested
     VECTOR_NOT_INIT(v);
     if (v->memsize == 0 || !v) {
         v = vector_with_cap(10);
@@ -45,6 +45,7 @@ inline void vector_insert(vector_t *v, size_t index, void *data) {
 
 
 inline void vector_push(vector_t *v, void *data) {
+    #warning not tested
     VECTOR_NOT_INIT(v);
     if (v->memsize == 0 || !v) {
         v = vector_with_cap(10);
@@ -57,11 +58,13 @@ inline void vector_push(vector_t *v, void *data) {
 
 
 inline void vector_pop(vector_t *v, void (*df)(void *)) {
+    #warning not tested
     vector_remove(v, v->count, df);
 }
 
 
 inline void vector_remove(vector_t *v, size_t index, void df(void *)) {
+    #warning not tested
     VECTOR_NOT_INIT(v);
     size_t i = index;
     if (v->count <= index) {

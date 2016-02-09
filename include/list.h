@@ -33,7 +33,7 @@ typedef struct {
  * create a new list
  * @return a new list_t
  */
-extern void *list_new();
+extern list_t *list_new();
 
 
 /**

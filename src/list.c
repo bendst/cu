@@ -6,7 +6,7 @@
                              NULL) {fprintf(stderr, "list not initalized"); \
                                     abort(); }
 
-inline void *list_new() {
+inline list_t *list_new() {
     return calloc(1, sizeof(list_t));
 }
 
@@ -65,8 +65,8 @@ inline void list_clear_del(list_t *li, void df(void *)) {
 
 
 inline void list_push_back(list_t *li, void *data) {
+    #warning not tested
     LIST_INIT_ERR(li);
-
     struct listnode_t *tail = calloc(1, sizeof(struct listnode_t));
     tail->data = data;
     tail->prev = li->tail;
@@ -85,6 +85,7 @@ inline void list_push_back(list_t *li, void *data) {
 
 
 inline void list_push_front(list_t *li, void *data) {
+    #warning not tested
     LIST_INIT_ERR(li);
 
     struct listnode_t *head = calloc(1, sizeof(struct listnode_t));
@@ -104,6 +105,7 @@ inline void list_push_front(list_t *li, void *data) {
 
 
 inline void list_append(list_t *li, list_t *other){
+    #warning not tested
     LIST_INIT_ERR(li);
     LIST_INIT_ERR(other);
 

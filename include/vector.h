@@ -15,6 +15,13 @@ typedef struct  {
     size_t count;
 } vector_t;
 
+
+#define VECTOR_INIT(N) {.data = calloc(N, sizeof(void *)), \
+                        .memsize = N, \
+                        .count = 0 }
+
+#define VECTOR_DEL(V, FN) vector_clear(&V, FN); free(V.data);
+
 /** creates a new empty vector of the size 10
  *  @result a new vector
  **/
@@ -28,6 +35,7 @@ extern vector_t *vector_new();
  **/
 extern vector_t *vector_with_cap(size_t n);
 
+
 /**
  * insert an element at given position,
  * should the index be greater than the current vector size,
@@ -39,11 +47,13 @@ extern vector_t *vector_with_cap(size_t n);
  */
 extern void vector_insert(vector_t *v, size_t index, void *data);
 
+
 /** appends a element to the vector
  *  @param v arrayList to which the data should be appended
  *  @param data pointer to add
  **/
 extern void vector_push(vector_t *v, void *data);
+
 
 /**
  * remove the last element from the vector
@@ -51,6 +61,7 @@ extern void vector_push(vector_t *v, void *data);
  * @param df function to free the data, if NULL is passed it is ignored
  */
 extern void vector_pop(vector_t *v, void (*df)(void *));
+
 
 /**
  * delete a element from the vector
@@ -80,6 +91,7 @@ extern void vector_foreach(const vector_t *v, void (*f)(void *));
  *  @param list to delete
  **/
 extern void vector_del(vector_t *v);
+
 
 /**
  * clearing a vector, in case that df is NULL every entry is set to 0

@@ -25,7 +25,7 @@ int has_int(const void *a, const void *b) {
 
 int main(int argc, char const *argv[]) {
     vector_t *v1 = vector_new();
-
+    vector_t v2 = VECTOR_INIT(20);
     int32_t array[40] = {
         0
     };
@@ -34,10 +34,13 @@ int main(int argc, char const *argv[]) {
     }
     for (size_t i = 0; i < 20; i++) {
         vector_push(v1, &array[i]);
+        vector_push(&v2, &array[i]);
     }
 
-    vector_foreach(v1, print);
+    //vector_foreach(v1, print);
+    vector_foreach(&v2, print);
 
+    VECTOR_DEL(v2, NULL);
 
     int key = 21;
     int result = vector_contains(v1, &key, has_int);
