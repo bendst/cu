@@ -1,25 +1,11 @@
-#include "vector.h"
 #include <string.h>
 #include <stdio.h>
+#include "vector.h"
+#include "util.h"
 
-#define VECTOR_NOT_INIT(V) if (V == NULL) {fprintf(stderr, \
-                                                   "vector not initialized\n"); \
-                                           exit(EXIT_FAILURE); }
-
-
-inline vector_t *vector_new() {
-    return vector_with_cap(8);
-}
-
-
-inline vector_t *vector_with_cap(size_t n) {
-    vector_t *v = calloc(1, sizeof(vector_t));
-    v->data = calloc(n, sizeof(void *));
-    v->memsize = n;
-    v->count = 0;
-    return v;
-}
-
+#define VECTOR_NOT_INIT(V) if (V == NULL) { \
+        fprintf(stderr, "vector not initialized\n"); \
+        abort(); }
 
 static inline void vector_push_front(vector_t *v, void *data) {
     VECTOR_NOT_INIT(v);
@@ -34,6 +20,20 @@ static inline void vector_push_front(vector_t *v, void *data) {
     }
     v->data[0] = data;
     v->count++;
+}
+
+
+inline vector_t *vector_new() {
+    return vector_with_cap(8);
+}
+
+
+inline vector_t *vector_with_cap(size_t n) {
+    vector_t *v = calloc(1, sizeof(vector_t));
+    v->data = calloc(n, sizeof(void *));
+    v->memsize = n;
+    v->count = 0;
+    return v;
 }
 
 
@@ -88,11 +88,7 @@ inline void vector_remove(vector_t *v, size_t index, void df(void *)) {
         df(to_delete);
     }
     size_t diff = v->count - i + 1;
-    void *err = memmove(v->data + i, v->data + i + 1, sizeof(void *) * diff);
-    if (err != v->data + i) {
-        fprintf(stderr, "deleting failed for %ld\n", index);
-        return;
-    }
+    memmove(v->data + i, v->data + i + 1, sizeof(void *) * diff);
     v->count--;
 }
 

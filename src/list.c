@@ -1,10 +1,11 @@
 #include "list.h"
 #include <string.h>
 #include <stdio.h>
+#include "util.h"
 
-#define LIST_INIT_ERR(L) if (L == \
-                             NULL) {fprintf(stderr, "list not initalized"); \
-                                    abort(); }
+#define LIST_INIT_ERR(L) if (L == NULL) { \
+        fprintf(stderr, "list not initalized"); \
+        abort(); }
 
 inline list_t *list_new() {
     return calloc(1, sizeof(list_t));
@@ -65,7 +66,6 @@ inline void list_clear_del(list_t *li, void df(void *)) {
 
 
 inline void list_push_back(list_t *li, void *data) {
-    #warning not tested
     LIST_INIT_ERR(li);
     struct listnode_t *tail = calloc(1, sizeof(struct listnode_t));
     tail->data = data;
@@ -85,7 +85,6 @@ inline void list_push_back(list_t *li, void *data) {
 
 
 inline void list_push_front(list_t *li, void *data) {
-    #warning not tested
     LIST_INIT_ERR(li);
 
     struct listnode_t *head = calloc(1, sizeof(struct listnode_t));
@@ -104,8 +103,7 @@ inline void list_push_front(list_t *li, void *data) {
 }
 
 
-inline void list_append(list_t *li, list_t *other){
-    #warning not tested
+inline void list_append(list_t *li, list_t *other) {
     LIST_INIT_ERR(li);
     LIST_INIT_ERR(other);
 
@@ -114,6 +112,7 @@ inline void list_append(list_t *li, list_t *other){
     li->tail = other->head;
     li->size = li->size + other->size;
 }
+
 
 inline bool list_is_empty(const list_t *li) {
     return list_len(li) == 0;

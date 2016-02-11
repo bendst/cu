@@ -51,7 +51,7 @@ extern vector_t *vector_with_cap(size_t n);
  * insert an element at given position,
  * should the index be greater than the current vector size,
  * the data is pushed to the end.
- * The goal is it to avoid any fragmentation.
+ * The vector avoids any fragmentation
  * @param v     vector
  * @param index position to insert
  * @param data  data to insert
@@ -99,7 +99,7 @@ extern void vector_foreach(const vector_t *v, void (*f)(void *));
 
 
 /** delete the vector and free allocated memory.
- * 	The elements of the vector will not be freed.
+ *  The elements of the vector will not be freed.
  *  @param v vector to delete
  **/
 extern void vector_del(vector_t *v);
@@ -132,9 +132,9 @@ extern void vector_clear_del(vector_t *v, void (*df)(void *));
  * @param  pred predicate function
  * @return      returns true on succuss and false on failure
  */
-extern bool vector_contains(const vector_t *v, const void *key, int (*pred)(
-                                const void *,
-                                const void *));
+extern bool vector_contains(const vector_t *v,
+                            const void *key,
+                            int (*pred)(const void *, const void *));
 
 
 /**
@@ -146,8 +146,7 @@ extern bool vector_contains(const vector_t *v, const void *key, int (*pred)(
  */
 extern void *vector_find(const vector_t *v,
                          const void *key,
-                         bool (*pred)(const void *,
-                                      const void *));
+                         bool (*pred)(const void *, const void *));
 
 
 /**
