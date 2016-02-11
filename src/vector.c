@@ -21,34 +21,49 @@ inline vector_t *vector_with_cap(size_t n) {
 }
 
 
-inline void vector_insert(vector_t *v, size_t index, void *data) {
-    #warning not tested
+static inline void vector_push_front(vector_t *v, void *data) {
     VECTOR_NOT_INIT(v);
     if (v->memsize == 0 || !v) {
-        v = vector_with_cap(10);
-    }
-    if (index >= v->memsize) {
-        vector_push(v, data);
-        return;
-    }
-
-    size_t diff = v->count - index;
-    if (index < v->count) {
-        memmove(v->data + index + 1, v->data + index, diff * sizeof(void *));
-        v->data[index] = data;
-        v->count = v->count + 1;
+        v = vector_with_cap(8);
+    } else if (v->memsize - 1 >= v->count) {
+        memmove(v->data + 1, v->data, sizeof(void *) * v->count);
     } else {
+        v->memsize *= 2;
+        v->data = realloc(v->data, sizeof(void *) * v->memsize);
+        memmove(v->data + 1, v->data, sizeof(void *) * v->count);
+    }
+    v->data[0] = data;
+    v->count++;
+}
+
+
+inline void vector_insert(vector_t *v, size_t index, void *data) {
+    VECTOR_NOT_INIT(v);
+    if (v->memsize == 0 || !v) {
+        v = vector_with_cap(8);
+    }
+    if (index == 0) {
+        vector_push_front(v, data);
+    } else if (index > v->count) {
         vector_push(v, data);
+    } else {
+        size_t diff = v->count - index;
+        if (v->memsize == v->count) {
+            v->memsize *= 2;
+            v->data = realloc(v->data, v->memsize * sizeof(void *));
+        }
+        memmove(v->data + index + 1, v->data + index, sizeof(void *) * diff);
+        v->data[index] = data;
+        v->count++;
     }
 
 }
 
 
 inline void vector_push(vector_t *v, void *data) {
-    #warning not tested
     VECTOR_NOT_INIT(v);
     if (v->memsize == 0 || !v) {
-        v = vector_with_cap(10);
+        v = vector_with_cap(8);
     } else if (v->memsize == v->count) {
         v->memsize *= 2;
         v->data = realloc(v->data, sizeof (void *) * v->memsize);
@@ -58,13 +73,11 @@ inline void vector_push(vector_t *v, void *data) {
 
 
 inline void vector_pop(vector_t *v, void (*df)(void *)) {
-    #warning not tested
     vector_remove(v, v->count, df);
 }
 
 
 inline void vector_remove(vector_t *v, size_t index, void df(void *)) {
-    #warning not tested
     VECTOR_NOT_INIT(v);
     size_t i = index;
     if (v->count <= index) {

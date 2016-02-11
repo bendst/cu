@@ -33,14 +33,15 @@ int main(int argc, char const *argv[]) {
     }
     for (size_t i = 0; i < 20; i++) {
         vector_push(v1, &array[i]);
-        vector_push(&v2, &array[i]);
+        vector_insert(&v2, 0, &array[i]);
+        vector_insert(&v2, 20, &array[i]);
+        vector_insert(&v2, 40, &array[i]);
     }
 
-    //vector_foreach(v1, print);
+    /* vector_foreach(v1, print); */
     vector_foreach(&v2, print);
 
     VECTOR_DEL(v2, NULL);
-
     int key = 21;
     int result = vector_contains(v1, &key, has_int);
     printf("HAS %d %d\n", key, result);
