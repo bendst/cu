@@ -124,39 +124,55 @@ Data Structures</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a36b97fa18ea393f2ead085de8cb88ec6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vector_8h.html#a36b97fa18ea393f2ead085de8cb88ec6">VECTOR_INIT</a>(N)</td></tr>
+<tr class="memdesc:a36b97fa18ea393f2ead085de8cb88ec6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a <a class="el" href="structvector__t.html" title="vector dynamically growing array ">vector_t</a> on the stack.  <a href="#a36b97fa18ea393f2ead085de8cb88ec6">More...</a><br /></td></tr>
 <tr class="separator:a36b97fa18ea393f2ead085de8cb88ec6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae19276fb9aac7ff131ca11ad6bc32545"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vector_8h.html#ae19276fb9aac7ff131ca11ad6bc32545">VECTOR_DEL</a>(V,  FN)&#160;&#160;&#160;<a class="el" href="vector_8h.html#a55f95082dace262b491a05c61b497761">vector_clear</a>(&amp;V, FN); free(V.data);</td></tr>
+<tr class="memdesc:ae19276fb9aac7ff131ca11ad6bc32545"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete a on stack allocated <a class="el" href="structvector__t.html" title="vector dynamically growing array ">vector_t</a>.  <a href="#ae19276fb9aac7ff131ca11ad6bc32545">More...</a><br /></td></tr>
 <tr class="separator:ae19276fb9aac7ff131ca11ad6bc32545"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a486d233830c907a99c33ce06bc875d0b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvector__t.html">vector_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vector_8h.html#a486d233830c907a99c33ce06bc875d0b">vector_new</a> ()</td></tr>
+<tr class="memdesc:a486d233830c907a99c33ce06bc875d0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new empty vector of the size 8.  <a href="#a486d233830c907a99c33ce06bc875d0b">More...</a><br /></td></tr>
 <tr class="separator:a486d233830c907a99c33ce06bc875d0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a359ee1a41d7a71987c2314e78ca08c6c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvector__t.html">vector_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vector_8h.html#a359ee1a41d7a71987c2314e78ca08c6c">vector_with_cap</a> (size_t n)</td></tr>
+<tr class="memdesc:a359ee1a41d7a71987c2314e78ca08c6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a empty vector of the size n.  <a href="#a359ee1a41d7a71987c2314e78ca08c6c">More...</a><br /></td></tr>
 <tr class="separator:a359ee1a41d7a71987c2314e78ca08c6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac679d22478bc67a31f9c72bb13defa69"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vector_8h.html#ac679d22478bc67a31f9c72bb13defa69">vector_insert</a> (<a class="el" href="structvector__t.html">vector_t</a> *v, size_t index, void *data)</td></tr>
+<tr class="memdesc:ac679d22478bc67a31f9c72bb13defa69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert an element at given position, should the index be greater than the current vector size then the data is pushed to the end. The vector avoids any fragmentation.  <a href="#ac679d22478bc67a31f9c72bb13defa69">More...</a><br /></td></tr>
 <tr class="separator:ac679d22478bc67a31f9c72bb13defa69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a692cfdd3fd5ef36105aef9148971c21a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vector_8h.html#a692cfdd3fd5ef36105aef9148971c21a">vector_push</a> (<a class="el" href="structvector__t.html">vector_t</a> *v, void *data)</td></tr>
+<tr class="memdesc:a692cfdd3fd5ef36105aef9148971c21a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends a element to the vector.  <a href="#a692cfdd3fd5ef36105aef9148971c21a">More...</a><br /></td></tr>
 <tr class="separator:a692cfdd3fd5ef36105aef9148971c21a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ad49ac31003d73b27959508c8c1f6dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vector_8h.html#a2ad49ac31003d73b27959508c8c1f6dc">vector_pop</a> (<a class="el" href="structvector__t.html">vector_t</a> *v, void(*df)(void *))</td></tr>
+<tr class="memdesc:a2ad49ac31003d73b27959508c8c1f6dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the last element from the vector.  <a href="#a2ad49ac31003d73b27959508c8c1f6dc">More...</a><br /></td></tr>
 <tr class="separator:a2ad49ac31003d73b27959508c8c1f6dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63ea6832a93d90ccf54be7144819cb3a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vector_8h.html#a63ea6832a93d90ccf54be7144819cb3a">vector_remove</a> (<a class="el" href="structvector__t.html">vector_t</a> *v, size_t index, void(*df)(void *))</td></tr>
+<tr class="memdesc:a63ea6832a93d90ccf54be7144819cb3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete a element from the vector.  <a href="#a63ea6832a93d90ccf54be7144819cb3a">More...</a><br /></td></tr>
 <tr class="separator:a63ea6832a93d90ccf54be7144819cb3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a210e4311f2ec578c745fa02b4b0dd6b9"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vector_8h.html#a210e4311f2ec578c745fa02b4b0dd6b9">vector_get</a> (const <a class="el" href="structvector__t.html">vector_t</a> *v, size_t index)</td></tr>
+<tr class="memdesc:a210e4311f2ec578c745fa02b4b0dd6b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the data at given index.  <a href="#a210e4311f2ec578c745fa02b4b0dd6b9">More...</a><br /></td></tr>
 <tr class="separator:a210e4311f2ec578c745fa02b4b0dd6b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4cc5acaac48f45ed6de41d6ae96e07ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vector_8h.html#a4cc5acaac48f45ed6de41d6ae96e07ca">vector_foreach</a> (const <a class="el" href="structvector__t.html">vector_t</a> *v, void(*f)(void *))</td></tr>
+<tr class="memdesc:a4cc5acaac48f45ed6de41d6ae96e07ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply the funtion f to every element in the vector.  <a href="#a4cc5acaac48f45ed6de41d6ae96e07ca">More...</a><br /></td></tr>
 <tr class="separator:a4cc5acaac48f45ed6de41d6ae96e07ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a616d5cdefb742090dfb7433a6f1328b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vector_8h.html#a616d5cdefb742090dfb7433a6f1328b2">vector_del</a> (<a class="el" href="structvector__t.html">vector_t</a> *v)</td></tr>
+<tr class="memdesc:a616d5cdefb742090dfb7433a6f1328b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete the vector and free allocated memory. The elements of the vector will not be freed.  <a href="#a616d5cdefb742090dfb7433a6f1328b2">More...</a><br /></td></tr>
 <tr class="separator:a616d5cdefb742090dfb7433a6f1328b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55f95082dace262b491a05c61b497761"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vector_8h.html#a55f95082dace262b491a05c61b497761">vector_clear</a> (<a class="el" href="structvector__t.html">vector_t</a> *v, void(*df)(void *))</td></tr>
+<tr class="memdesc:a55f95082dace262b491a05c61b497761"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove all elements from the vector, in case that df is NULL every entry is set to 0.  <a href="#a55f95082dace262b491a05c61b497761">More...</a><br /></td></tr>
 <tr class="separator:a55f95082dace262b491a05c61b497761"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f1667e167881e3a357e3bb69e9b1e9a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vector_8h.html#a8f1667e167881e3a357e3bb69e9b1e9a">vector_clear_del</a> (<a class="el" href="structvector__t.html">vector_t</a> *v, void(*df)(void *))</td></tr>
+<tr class="memdesc:a8f1667e167881e3a357e3bb69e9b1e9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove all elements and free the <a class="el" href="structvector__t.html" title="vector dynamically growing array ">vector_t</a>.  <a href="#a8f1667e167881e3a357e3bb69e9b1e9a">More...</a><br /></td></tr>
 <tr class="separator:a8f1667e167881e3a357e3bb69e9b1e9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac516ab3950c49c6a42c809f03a0bd13b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vector_8h.html#ac516ab3950c49c6a42c809f03a0bd13b">vector_contains</a> (const <a class="el" href="structvector__t.html">vector_t</a> *v, const void *key, int(*pred)(const void *, const void *))</td></tr>
+<tr class="memdesc:ac516ab3950c49c6a42c809f03a0bd13b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check whether a element is in the vector. for an int created on the stack: return memcmp(a, *(void **)b, sizeof(int32_t))  <a href="#ac516ab3950c49c6a42c809f03a0bd13b">More...</a><br /></td></tr>
 <tr class="separator:ac516ab3950c49c6a42c809f03a0bd13b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d73190a8f9a8e573f725c7465fcc3aa"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vector_8h.html#a8d73190a8f9a8e573f725c7465fcc3aa">vector_find</a> (const <a class="el" href="structvector__t.html">vector_t</a> *v, const void *key, bool(*pred)(const void *, const void *))</td></tr>
+<tr class="memdesc:a8d73190a8f9a8e573f725c7465fcc3aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find an element in given vector.  <a href="#a8d73190a8f9a8e573f725c7465fcc3aa">More...</a><br /></td></tr>
 <tr class="separator:a8d73190a8f9a8e573f725c7465fcc3aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5ed86421adb9700a4be77450200c349"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vector_8h.html#aa5ed86421adb9700a4be77450200c349">vector_sort</a> (<a class="el" href="structvector__t.html">vector_t</a> *v, int(*pred)(const void *, const void *))</td></tr>
+<tr class="memdesc:aa5ed86421adb9700a4be77450200c349"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sort the vector with quicksort.  <a href="#aa5ed86421adb9700a4be77450200c349">More...</a><br /></td></tr>
 <tr class="separator:aa5ed86421adb9700a4be77450200c349"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -183,7 +199,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>delete a on stack allocated <a class="el" href="structvector__t.html" title="vector dynamically growing array ">vector_t</a> </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Delete a on stack allocated <a class="el" href="structvector__t.html" title="vector dynamically growing array ">vector_t</a>. </p>
+<div class="fragment"><div class="line"><a class="code" href="structvector__t.html">vector_t</a> v = <a class="code" href="vector_8h.html#a36b97fa18ea393f2ead085de8cb88ec6">VECTOR_INIT</a>(8);</div><div class="line"><a class="code" href="vector_8h.html#ae19276fb9aac7ff131ca11ad6bc32545">VECTOR_DEL</a>(v, NULL);</div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">V</td><td><a class="el" href="structvector__t.html" title="vector dynamically growing array ">vector_t</a> to delete </td></tr>
     <tr><td class="paramname">FN</td><td>function to delete the content of the <a class="el" href="structvector__t.html" title="vector dynamically growing array ">vector_t</a> </td></tr>
@@ -206,13 +224,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">{.data = calloc(N, <span class="keyword">sizeof</span>(<span class="keywordtype">void</span> *)), \</div><div class="line">                        .memsize = N, \</div><div class="line">                        .count = 0 }</div></div><!-- fragment --><p>Initialize a <a class="el" href="structvector__t.html" title="vector dynamically growing array ">vector_t</a> on the stack </p><dl class="params"><dt>Parameters</dt><dd>
+<b>Value:</b><div class="fragment"><div class="line">{.data = <a class="code" href="util_8h.html#a5ccc0589ed59f1ecd4a36d38d58f44eb">calloc</a>(N, <span class="keyword">sizeof</span>(<span class="keywordtype">void</span> *)), .memsize = N, \</div><div class="line">                        .count = 0 }</div><div class="ttc" id="util_8h_html_a5ccc0589ed59f1ecd4a36d38d58f44eb"><div class="ttname"><a href="util_8h.html#a5ccc0589ed59f1ecd4a36d38d58f44eb">calloc</a></div><div class="ttdeci">#define calloc(NM, S)</div><div class="ttdoc">wrapper for calloc </div><div class="ttdef"><b>Definition:</b> util.h:27</div></div>
+</div><!-- fragment -->
+<p>Initialize a <a class="el" href="structvector__t.html" title="vector dynamically growing array ">vector_t</a> on the stack. </p>
+<div class="fragment"><div class="line"><a class="code" href="structvector__t.html">vector_t</a> v = <a class="code" href="vector_8h.html#a36b97fa18ea393f2ead085de8cb88ec6">VECTOR_INIT</a>(8);</div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">N</td><td>size of the vector </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>returns a <a class="el" href="structvector__t.html" title="vector dynamically growing array ">vector_t</a> </dd></dl>
 
 </div>
 </div>
@@ -240,7 +260,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>clearing a vector, in case that df is NULL every entry is set to 0 </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Remove all elements from the vector, in case that df is NULL every entry is set to 0. </p>
+<div class="fragment"><div class="line"><a class="code" href="structvector__t.html">vector_t</a> *v = <a class="code" href="vector_8h.html#a486d233830c907a99c33ce06bc875d0b">vector_new</a>();</div><div class="line"><span class="keywordtype">int</span> a = 42;</div><div class="line"><a class="code" href="vector_8h.html#a692cfdd3fd5ef36105aef9148971c21a">vector_push</a>(v, &amp;a);</div><div class="line"><a class="code" href="vector_8h.html#a55f95082dace262b491a05c61b497761">vector_clear</a>(v, NULL);</div><div class="line"><span class="comment">// v= []</span></div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>vector to clear </td></tr>
     <tr><td class="paramname">df</td><td>deleting function for heap allocated data </td></tr>
@@ -273,10 +295,11 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>delete the vector and its content</p>
-<dl class="params"><dt>Parameters</dt><dd>
+
+<p>Remove all elements and free the <a class="el" href="structvector__t.html" title="vector dynamically growing array ">vector_t</a>. </p>
+<div class="fragment"><div class="line"><a class="code" href="structvector__t.html">vector_t</a> *v = <a class="code" href="vector_8h.html#a486d233830c907a99c33ce06bc875d0b">vector_new</a>();</div><div class="line"><span class="keywordtype">int</span> a = 42;</div><div class="line"><a class="code" href="vector_8h.html#a692cfdd3fd5ef36105aef9148971c21a">vector_push</a>(v, &amp;a);</div><div class="line"><a class="code" href="vector_8h.html#a8f1667e167881e3a357e3bb69e9b1e9a">vector_clear_del</a>(v, NULL);</div><div class="line"><span class="comment">// v = NULL</span></div></div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">list</td><td>to delete </td></tr>
+    <tr><td class="paramname">v</td><td><a class="el" href="structvector__t.html" title="vector dynamically growing array ">vector_t</a> to delete </td></tr>
     <tr><td class="paramname">df</td><td>function with which the data should be deleted </td></tr>
   </table>
   </dd>
@@ -313,7 +336,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Check whether a element is in the vector. Example for predicate functions: for Integer on stack: return memcmp(a, *(void **)b, sizeof(int32_t))</p>
+
+<p>Check whether a element is in the vector. for an int created on the stack: return memcmp(a, *(void **)b, sizeof(int32_t)) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>vector to search </td></tr>
@@ -339,7 +363,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>delete the vector and free allocated memory. The elements of the vector will not be freed. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Delete the vector and free allocated memory. The elements of the vector will not be freed. </p>
+<div class="fragment"><div class="line"><a class="code" href="structvector__t.html">vector_t</a> *v = <a class="code" href="vector_8h.html#a486d233830c907a99c33ce06bc875d0b">vector_new</a>();</div><div class="line"><a class="code" href="vector_8h.html#a616d5cdefb742090dfb7433a6f1328b2">vector_del</a>(v);</div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>vector to delete </td></tr>
   </table>
@@ -377,7 +403,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>find an element in given vector </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Find an element in given vector. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>vector to search </td></tr>
     <tr><td class="paramname">key</td><td>key property </td></tr>
@@ -412,7 +440,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>apply the funtion f to every element in the vector </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Apply the funtion f to every element in the vector. </p>
+<div class="fragment"><div class="line"><a class="code" href="structvector__t.html">vector_t</a> v = <a class="code" href="vector_8h.html#a36b97fa18ea393f2ead085de8cb88ec6">VECTOR_INIT</a>(8);</div><div class="line"><span class="keywordtype">int</span> a = 42;</div><div class="line"><a class="code" href="vector_8h.html#a692cfdd3fd5ef36105aef9148971c21a">vector_push</a>(&amp;v, &amp;a);</div><div class="line"><a class="code" href="vector_8h.html#a4cc5acaac48f45ed6de41d6ae96e07ca">vector_foreach</a>(&amp;v, addTwo);</div><div class="line"><span class="comment">// v = [44]</span></div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">list</td><td>vector to operate on </td></tr>
     <tr><td class="paramname">f</td><td>function to apply </td></tr>
@@ -445,7 +475,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>returns the data of the index </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Retrieve the data at given index. </p>
+<div class="fragment"><div class="line"><a class="code" href="structvector__t.html">vector_t</a> v = <a class="code" href="vector_8h.html#a36b97fa18ea393f2ead085de8cb88ec6">VECTOR_INIT</a>(8);</div><div class="line"><span class="keywordtype">int</span> a = 42;</div><div class="line"><a class="code" href="vector_8h.html#a692cfdd3fd5ef36105aef9148971c21a">vector_push</a>(&amp;v, &amp;a);</div><div class="line"><span class="keywordtype">int</span> a = <a class="code" href="vector_8h.html#a210e4311f2ec578c745fa02b4b0dd6b9">vector_get</a>(&amp;v, 0);</div><div class="line">print(<span class="stringliteral">&quot;%d&quot;</span>, a); <span class="comment">// 42</span></div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">list</td><td>fetch the data of this arrayList </td></tr>
     <tr><td class="paramname">i</td><td>index to fetch </td></tr>
@@ -485,7 +517,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>insert an element at given position, should the index be greater than the current vector size, the data is pushed to the end. The vector avoids any fragmentation </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Insert an element at given position, should the index be greater than the current vector size then the data is pushed to the end. The vector avoids any fragmentation. </p>
+<div class="fragment"><div class="line"><a class="code" href="structvector__t.html">vector_t</a> *v = <a class="code" href="vector_8h.html#a486d233830c907a99c33ce06bc875d0b">vector_new</a>();</div><div class="line"><span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i=0; i&lt;10, i++){</div><div class="line">    <a class="code" href="vector_8h.html#ac679d22478bc67a31f9c72bb13defa69">vector_insert</a>(v, 0, &amp;i);</div><div class="line">}</div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>vector </td></tr>
     <tr><td class="paramname">index</td><td>position to insert </td></tr>
@@ -508,7 +542,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>creates a new empty vector of the size 10 </p><dl class="section return"><dt>Returns</dt><dd>a new vector </dd></dl>
+
+<p>Creates a new empty vector of the size 8. </p>
+<div class="fragment"><div class="line"><a class="code" href="structvector__t.html">vector_t</a> *v = <a class="code" href="vector_8h.html#a486d233830c907a99c33ce06bc875d0b">vector_new</a>();</div></div><!-- fragment --><dl class="section return"><dt>Returns</dt><dd>a new vector </dd></dl>
 
 </div>
 </div>
@@ -535,7 +571,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>remove the last element from the vector </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Remove the last element from the vector. </p>
+<div class="fragment"><div class="line"><a class="code" href="structvector__t.html">vector_t</a> v = <a class="code" href="vector_8h.html#a36b97fa18ea393f2ead085de8cb88ec6">VECTOR_INIT</a>(8);</div><div class="line"><span class="keywordtype">int</span> a = 42;</div><div class="line"><span class="keywordtype">int</span> b = 24;</div><div class="line"><a class="code" href="vector_8h.html#a692cfdd3fd5ef36105aef9148971c21a">vector_push</a>(&amp;v, &amp;a);</div><div class="line"><a class="code" href="vector_8h.html#a692cfdd3fd5ef36105aef9148971c21a">vector_push</a>(&amp;v, &amp;b);</div><div class="line"><a class="code" href="vector_8h.html#a2ad49ac31003d73b27959508c8c1f6dc">vector_pop</a>(&amp;v, NULL);</div><div class="line"><span class="comment">// v = [42]</span></div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>vector to remove the element from </td></tr>
     <tr><td class="paramname">df</td><td>function to free the data, if NULL is passed it is ignored </td></tr>
@@ -568,7 +606,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>appends a element to the vector </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Appends a element to the vector. </p>
+<div class="fragment"><div class="line"><a class="code" href="structvector__t.html">vector_t</a> v = <a class="code" href="vector_8h.html#a36b97fa18ea393f2ead085de8cb88ec6">VECTOR_INIT</a>(8);</div><div class="line"><span class="keywordtype">int</span> a = 42;</div><div class="line"><span class="keywordtype">int</span> b = 24;</div><div class="line"><a class="code" href="vector_8h.html#a692cfdd3fd5ef36105aef9148971c21a">vector_push</a>(&amp;v, &amp;a);</div><div class="line"><a class="code" href="vector_8h.html#a692cfdd3fd5ef36105aef9148971c21a">vector_push</a>(&amp;v, &amp;b);</div><div class="line"><span class="comment">// v = [42, 24]</span></div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>arrayList to which the data should be appended </td></tr>
     <tr><td class="paramname">data</td><td>pointer to add </td></tr>
@@ -607,7 +647,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>delete a element from the vector </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Delete a element from the vector. </p>
+<div class="fragment"><div class="line"><a class="code" href="structvector__t.html">vector_t</a> v = <a class="code" href="vector_8h.html#a36b97fa18ea393f2ead085de8cb88ec6">VECTOR_INIT</a>(8);</div><div class="line"><span class="keywordtype">int</span> a = 42;</div><div class="line"><span class="keywordtype">int</span> b = 24;</div><div class="line"><a class="code" href="vector_8h.html#a692cfdd3fd5ef36105aef9148971c21a">vector_push</a>(&amp;v, &amp;a);</div><div class="line"><a class="code" href="vector_8h.html#a63ea6832a93d90ccf54be7144819cb3a">vector_remove</a>(&amp;v, 0, NULL);</div><div class="line"><span class="comment">// v = [24]</span></div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>vector </td></tr>
     <tr><td class="paramname">index</td><td>of the element to remove </td></tr>
@@ -641,7 +683,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Sort the vector with quicksort </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Sort the vector with quicksort. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>vector to sort </td></tr>
     <tr><td class="paramname">pred</td><td>predicate function </td></tr>
@@ -664,7 +708,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>creates a empty vector of the size n </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Creates a empty vector of the size n. </p>
+<div class="fragment"><div class="line"><a class="code" href="structvector__t.html">vector_t</a> *v = <a class="code" href="vector_8h.html#a359ee1a41d7a71987c2314e78ca08c6c">vector_with_cap</a>(8);</div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">n</td><td>size of the empty array </td></tr>
     <tr><td class="paramname">returns</td><td>a new vector </td></tr>

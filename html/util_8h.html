@@ -116,11 +116,14 @@ $(document).ready(function(){initNavTree('util_8h.html','');});
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a2d61e4c055b9e6c718bad21ada51ccdc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>memmove</b>(D,  S,  N)</td></tr>
+<tr class="memitem:a2d61e4c055b9e6c718bad21ada51ccdc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a2d61e4c055b9e6c718bad21ada51ccdc">memmove</a>(D,  S,  N)</td></tr>
+<tr class="memdesc:a2d61e4c055b9e6c718bad21ada51ccdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">wraper for memmove  <a href="#a2d61e4c055b9e6c718bad21ada51ccdc">More...</a><br /></td></tr>
 <tr class="separator:a2d61e4c055b9e6c718bad21ada51ccdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ccc0589ed59f1ecd4a36d38d58f44eb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>calloc</b>(NM,  S)</td></tr>
+<tr class="memitem:a5ccc0589ed59f1ecd4a36d38d58f44eb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a5ccc0589ed59f1ecd4a36d38d58f44eb">calloc</a>(NM,  S)</td></tr>
+<tr class="memdesc:a5ccc0589ed59f1ecd4a36d38d58f44eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">wrapper for calloc  <a href="#a5ccc0589ed59f1ecd4a36d38d58f44eb">More...</a><br /></td></tr>
 <tr class="separator:a5ccc0589ed59f1ecd4a36d38d58f44eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a535b58ab5aa48e2e86073e334d43fd32"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>malloc</b>(S)</td></tr>
+<tr class="memitem:a535b58ab5aa48e2e86073e334d43fd32"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8h.html#a535b58ab5aa48e2e86073e334d43fd32">malloc</a>(S)</td></tr>
+<tr class="memdesc:a535b58ab5aa48e2e86073e334d43fd32"><td class="mdescLeft">&#160;</td><td class="mdescRight">wrapper for malloc  <a href="#a535b58ab5aa48e2e86073e334d43fd32">More...</a><br /></td></tr>
 <tr class="separator:a535b58ab5aa48e2e86073e334d43fd32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -149,7 +152,18 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">({ \</div><div class="line">        void *ptr = calloc(NM, S); \</div><div class="line">        if (ptr == NULL) { \</div><div class="line">            perror(<span class="stringliteral">&quot;calloc&quot;</span>); \</div><div class="line">            abort(); \</div><div class="line">        } \</div><div class="line">        ptr; \</div><div class="line">    })</div></div><!-- fragment -->
+<b>Value:</b><div class="fragment"><div class="line">({ \</div><div class="line">        void *ptr = <a class="code" href="util_8h.html#a5ccc0589ed59f1ecd4a36d38d58f44eb">calloc</a>(NM, S); \</div><div class="line">        if (ptr == NULL) { \</div><div class="line">            perror(<span class="stringliteral">&quot;calloc&quot;</span>); \</div><div class="line">            abort(); \</div><div class="line">        } \</div><div class="line">        ptr; \</div><div class="line">    })</div><div class="ttc" id="util_8h_html_a5ccc0589ed59f1ecd4a36d38d58f44eb"><div class="ttname"><a href="util_8h.html#a5ccc0589ed59f1ecd4a36d38d58f44eb">calloc</a></div><div class="ttdeci">#define calloc(NM, S)</div><div class="ttdoc">wrapper for calloc </div><div class="ttdef"><b>Definition:</b> util.h:27</div></div>
+</div><!-- fragment -->
+<p>wrapper for calloc </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">NM</td><td>object count </td></tr>
+    <tr><td class="paramname">S</td><td>size </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>pointer to allocated memory </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a535b58ab5aa48e2e86073e334d43fd32"></a>
@@ -165,7 +179,17 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">(\</div><div class="line">    {calloc(1, S);}\</div><div class="line">)</div></div><!-- fragment -->
+<b>Value:</b><div class="fragment"><div class="line">(\</div><div class="line">    {<a class="code" href="util_8h.html#a5ccc0589ed59f1ecd4a36d38d58f44eb">calloc</a>(1, S);}\</div><div class="line">)</div><div class="ttc" id="util_8h_html_a5ccc0589ed59f1ecd4a36d38d58f44eb"><div class="ttname"><a href="util_8h.html#a5ccc0589ed59f1ecd4a36d38d58f44eb">calloc</a></div><div class="ttdeci">#define calloc(NM, S)</div><div class="ttdoc">wrapper for calloc </div><div class="ttdef"><b>Definition:</b> util.h:27</div></div>
+</div><!-- fragment -->
+<p>wrapper for malloc </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">S</td><td>size </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>pointer to allocated memory </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="a2d61e4c055b9e6c718bad21ada51ccdc"></a>
@@ -197,7 +221,18 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordtype">void</span> *err = memmove(D, S, N); \</div><div class="line">    if (err != D) { \</div><div class="line">        perror(<span class="stringliteral">&quot;memmove&quot;</span>); \</div><div class="line">        abort(); \</div><div class="line">    }</div></div><!-- fragment -->
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordtype">void</span> *err = <a class="code" href="util_8h.html#a2d61e4c055b9e6c718bad21ada51ccdc">memmove</a>(D, S, N); \</div><div class="line">    if (err != D) { \</div><div class="line">        perror(<span class="stringliteral">&quot;memmove&quot;</span>); \</div><div class="line">        abort(); \</div><div class="line">    }</div><div class="ttc" id="util_8h_html_a2d61e4c055b9e6c718bad21ada51ccdc"><div class="ttname"><a href="util_8h.html#a2d61e4c055b9e6c718bad21ada51ccdc">memmove</a></div><div class="ttdeci">#define memmove(D, S, N)</div><div class="ttdoc">wraper for memmove </div><div class="ttdef"><b>Definition:</b> util.h:15</div></div>
+</div><!-- fragment -->
+<p>wraper for memmove </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">D</td><td>destination </td></tr>
+    <tr><td class="paramname">S</td><td>source </td></tr>
+    <tr><td class="paramname">N</td><td>size </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 </div><!-- contents -->
