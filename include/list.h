@@ -21,7 +21,7 @@ typedef struct listnode_t {
 } listnode_t;
 
 /**
- * @brief holds the reference to the head and tail of the list
+ * @brief Holds the reference to the head and tail of the list
  */
 typedef struct {
     /** head of the list_t **/
@@ -33,7 +33,7 @@ typedef struct {
 } list_t;
 
 /**
- * Iterate over the content of the list_t
+ * @brief Iterate over the content of the list_t
  * @param  IT name of the temporary variable
  * @param  L  list_t to iterate over
  * @return    yields a element of the list_t, will be accesable through IT->data
@@ -50,7 +50,8 @@ typedef struct {
                    .size = 0}
 
 /**
- * clear and delete a list_t which was created on the stack
+ * @brief Clear and delete a list_t,
+ * which was created on the stack
  * @param  L  list_t to delete
  * @param  FN function with which the content of the list can be deleted
  */
@@ -62,14 +63,14 @@ typedef struct {
 
 
 /**
- * create a new list
+ * @brief Create a new list
  * @return a new list_t
  */
 extern list_t *list_new();
 
 
 /**
- * clone given list
+ * @brief Clone given list
  * @param  li list to clone
  * @param clone function for given element. In case of NULL it is ignored
  * @return    a new list_t
@@ -78,7 +79,7 @@ extern void *list_clone(const list_t *li, void *(*clone)(void *));
 
 
 /**
- * clear a list of every entry
+ * @brief Remove all elements from the list.
  * @param li list to clear
  * @param df deleting function, in case of NULL the argument is ignored
  */
@@ -86,43 +87,43 @@ extern void list_clear(const list_t *li, void (*df)(void *));
 
 
 /**
- * delete a list
+ * @brief Free the memory allocated
  * @param li list to delete
  */
 extern void list_del(list_t *li);
 
 
 /**
- * clear and delete a list
- * @param li list to clear and delete
- * @param df deleting function, in case of NULL the argument is ignored
+ * @brief Remove all elements from the list and free it.
+ * @param li List to clear and delete
+ * @param df Deleting function, in case of NULL the argument is ignored
  */
 extern void list_clear_del(list_t *li, void (*df)(void *));
 
 
 /**
- * append an element to the list
+ * @brief Append an element to the list
  * @param li   list to append to
  * @param data data to append
  */
 extern void list_push_back(list_t *li, void *data);
 
 /**
- * Prepend an element to the list
+ * @brief Prepend an element to the list
  * @param li   list to prepend to
  * @param data data to prepend
  */
 extern void list_push_front(list_t *li, void *data);
 
 /**
- * Append a oth
- * @param li    [description]
- * @param other [description]
+ * @brief Append another list_t to the current one.
+ * @param li    list to append to
+ * @param other other list
  */
 extern void list_append(list_t *li, list_t *other);
 
 /**
- * check whether the list is empty
+ * @brief Check whether the list is empty
  * @param  li list to check
  * @return    returns true on success and false on failure
  */
@@ -130,7 +131,7 @@ extern bool list_is_empty(const list_t *li);
 
 
 /**
- * retrieve the length of a list
+ * @brief Retrieve the length of a list
  * @param  li list to check
  * @return    returns the list length
  */
@@ -138,7 +139,7 @@ extern size_t list_len(const list_t *li);
 
 
 /**
- * apply a function to every element of the list
+ * @brief Apply a function to every element of the list
  * @param li list
  * @param f  function to apply
  */
@@ -146,7 +147,7 @@ extern void list_foreach(const list_t *li, void (*f)(void *));
 
 
 /**
- * filter elements by given predicate
+ * @brief Filter elements by given predicate
  * @param  li   list to filter
  * @param key key to find
  * @param  pred predicate function
@@ -159,7 +160,7 @@ extern void *list_filter(const list_t *li,
 
 
 /**
- * find a element in the list
+ * @brief Find a element in the list
  * @param  li   list to search
  * @param key key to find
  * @param  pred predicate function

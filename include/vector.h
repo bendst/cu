@@ -18,40 +18,70 @@ typedef struct  {
     size_t count;
 } vector_t;
 
+
 /**
- * Initialize a vector_t on the stack
+ * @brief Initialize a vector_t on the stack
+ *
+ * ~~~{.c}
+ * vector_t v = VECTOR_INIT(8);
+ * ~~~
+ *
  * @param  N size of the vector
- * @return   returns a vector_t
+ * @internal
  */
-#define VECTOR_INIT(N) {.data = calloc(N, sizeof(void *)), \
-                        .memsize = N, \
+#define VECTOR_INIT(N) {.data = calloc(N, sizeof(void *)), .memsize = N, \
                         .count = 0 }
+
 /**
- * delete a on stack allocated vector_t
+ * @brief Delete a on stack allocated vector_t
+ *
+ * ~~~{.c}
+ * vector_t v = VECTOR_INIT(8);
+ * VECTOR_DEL(v, NULL);
+ * ~~~
+ *
  * @param  V  vector_t to delete
  * @param  FN function to delete the content of the vector_t
  */
 #define VECTOR_DEL(V, FN) vector_clear(&V, FN); free(V.data);
 
-/** creates a new empty vector of the size 10
- *  @result a new vector
+/** @brief Creates a new empty vector of the size 8
+ *
+ * ~~~{.c}
+ * vector_t *v = vector_new();
+ * ~~~
+ *
+ *  @return a new vector
  **/
 extern vector_t *vector_new();
 
 
-/** creates a empty vector of the size n
+/** @brief Creates a empty vector of the size n
+ *
+ * ~~~{.c}
+ * vector_t *v = vector_with_cap(8);
+ * ~~~
+ *
  *  @param n size of the empty array
  *  @param returns a new vector
- *  @result a new vector
+ *  @return a new vector
  **/
 extern vector_t *vector_with_cap(size_t n);
 
 
 /**
- * insert an element at given position,
- * should the index be greater than the current vector size,
+ * @brief Insert an element at given position,
+ * should the index be greater than the current vector size then
  * the data is pushed to the end.
  * The vector avoids any fragmentation
+ *
+ * ~~~{.c}
+ * vector_t *v = vector_new();
+ * for(size_t i=0; i<10, i++){
+ *     vector_insert(v, 0, &i);
+ * }
+ * ~~~
+ *
  * @param v     vector
  * @param index position to insert
  * @param data  data to insert
@@ -59,7 +89,17 @@ extern vector_t *vector_with_cap(size_t n);
 extern void vector_insert(vector_t *v, size_t index, void *data);
 
 
-/** appends a element to the vector
+/** @brief Appends a element to the vector
+ *
+ * ~~~{.c}
+ * vector_t v = VECTOR_INIT(8);
+ * int a = 42;
+ * int b = 24;
+ * vector_push(&v, &a);
+ * vector_push(&v, &b);
+ * // v = [42, 24]
+ * ~~~
+ *
  *  @param v arrayList to which the data should be appended
  *  @param data pointer to add
  **/
@@ -67,7 +107,18 @@ extern void vector_push(vector_t *v, void *data);
 
 
 /**
- * remove the last element from the vector
+ * @brief Remove the last element from the vector
+ *
+ * ~~~{.c}
+ * vector_t v = VECTOR_INIT(8);
+ * int a = 42;
+ * int b = 24;
+ * vector_push(&v, &a);
+ * vector_push(&v, &b);
+ * vector_pop(&v, NULL);
+ * // v = [42]
+ * ~~~
+ *
  * @param v vector to remove the element from
  * @param df function to free the data, if NULL is passed it is ignored
  */
@@ -75,7 +126,17 @@ extern void vector_pop(vector_t *v, void (*df)(void *));
 
 
 /**
- * delete a element from the vector
+ * @brief Delete a element from the vector
+ *
+ * ~~~{.c}
+ * vector_t v = VECTOR_INIT(8);
+ * int a = 42;
+ * int b = 24;
+ * vector_push(&v, &a);
+ * vector_remove(&v, 0, NULL);
+ * // v = [24]
+ * ~~~
+ *
  * @param v     vector
  * @param index of the element to remove
  * @param df    deleting function for the given element. df is ignored if NULL
@@ -83,49 +144,88 @@ extern void vector_pop(vector_t *v, void (*df)(void *));
 extern void vector_remove(vector_t *v, size_t index, void (*df)(void *));
 
 
-/** returns the data of the index
+/** @brief Retrieve the data at given index.
+ *
+ * ~~~{.c}
+ * vector_t v = VECTOR_INIT(8);
+ * int a = 42;
+ * vector_push(&v, &a);
+ * int a = vector_get(&v, 0);
+ * print("%d", a); // 42
+ * ~~~
+ *
  *  @param list fetch the data of this arrayList
  *  @param i index to fetch
- *  @result returns the pointer to the data
+ *  @return returns the pointer to the data
  **/
 extern void *vector_get(const vector_t *v, size_t index);
 
 
-/** apply the funtion f to every element in the vector
+/** @brief Apply the funtion f to every element in the vector
+ *
+ * ~~~{.c}
+ * vector_t v = VECTOR_INIT(8);
+ * int a = 42;
+ * vector_push(&v, &a);
+ * vector_foreach(&v, addTwo);
+ * // v = [44]
+ * ~~~
+ *
  *  @param list vector to operate on
  *  @param f function to apply
  **/
 extern void vector_foreach(const vector_t *v, void (*f)(void *));
 
 
-/** delete the vector and free allocated memory.
+/** @brief Delete the vector and free allocated memory.
  *  The elements of the vector will not be freed.
+ *
+ *  ~~~{.c}
+ *  vector_t *v = vector_new();
+ *  vector_del(v);
+ *  ~~~
+ *
  *  @param v vector to delete
  **/
 extern void vector_del(vector_t *v);
 
 
 /**
- * clearing a vector, in case that df is NULL every entry is set to 0
+ * @brief Remove all elements from the vector, in case that df is NULL every entry is set to 0
+ *
+ * ~~~{.c}
+ * vector_t *v = vector_new();
+ * int a = 42;
+ * vector_push(v, &a);
+ * vector_clear(v, NULL);
+ * // v= []
+ * ~~~
+ *
  * @param v  vector to clear
  * @param df deleting function for heap allocated data
  */
 extern void vector_clear(vector_t *v, void (*df)(void *));
 
 
-/** delete the vector and its content
+/** @brief Remove all elements and free the vector_t
  *
- *  @param list to delete
+ * ~~~{.c}
+ * vector_t *v = vector_new();
+ * int a = 42;
+ * vector_push(v, &a);
+ * vector_clear_del(v, NULL);
+ * // v = NULL
+ * ~~~
+ *  @param v vector_t to delete
  *  @param df function with which the data should be deleted
  **/
 extern void vector_clear_del(vector_t *v, void (*df)(void *));
 
 
 /**
- * Check whether a element is in the vector.
- * Example for predicate functions:
- *      for Integer on stack:
- *          return memcmp(a, *(void **)b, sizeof(int32_t))
+ * @brief Check whether a element is in the vector.
+ * for an int created on the stack:
+ *      return memcmp(a, *(void **)b, sizeof(int32_t))
  *
  * @param  v    vector to search
  * @param  key  item to find
@@ -138,7 +238,7 @@ extern bool vector_contains(const vector_t *v,
 
 
 /**
- * find an element in given vector
+ * @brief Find an element in given vector
  * @param  v    vector to search
  * @param  key  key property
  * @param  pred predicate function
@@ -150,7 +250,7 @@ extern void *vector_find(const vector_t *v,
 
 
 /**
- * Sort the vector with quicksort
+ * @brief Sort the vector with quicksort
  * @param v    vector to sort
  * @param pred predicate function
  */
