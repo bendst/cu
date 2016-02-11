@@ -5,7 +5,7 @@ var searchData=
   ['list_5fclear',['list_clear',['../list_8h.html#aec32707a901a95566d7380b33c400eba',1,'list.h']]],
   ['list_5fclear_5fdel',['list_clear_del',['../list_8h.html#a9cef7fe487b993c058474ab172ede11d',1,'list.h']]],
   ['list_5fclone',['list_clone',['../list_8h.html#ad60115a5c33bfd1a917df924fdda2650',1,'list.h']]],
-  ['list_5fdel',['list_del',['../list_8h.html#af297afd0515511336f0b6604681ba61f',1,'list_del(list_t *li):&#160;list.h'],['../list_8h.html#af189447b664061437606b4ef3f19f95f',1,'LIST_DEL():&#160;list.h']]],
+  ['list_5fdel',['LIST_DEL',['../list_8h.html#af189447b664061437606b4ef3f19f95f',1,'LIST_DEL():&#160;list.h'],['../list_8h.html#af297afd0515511336f0b6604681ba61f',1,'list_del(list_t *li):&#160;list.h']]],
   ['list_5ffilter',['list_filter',['../list_8h.html#a8e5e74da76643515087a8a0efb8073fe',1,'list.h']]],
   ['list_5ffind',['list_find',['../list_8h.html#a597ad03922fcfe0a854d82e82f17f1ac',1,'list.h']]],
   ['list_5ffor',['LIST_FOR',['../list_8h.html#ae92b27621be9d7d834b77bfadec45d2d',1,'list.h']]],
