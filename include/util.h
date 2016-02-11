@@ -1,6 +1,11 @@
 #ifndef CUUTIL_H_
 #define CUUTIL_H_
 
+/**
+ * @file util.h
+ * @brief Contains various helper functions
+ */
+
 #define memmove(D, S, N) void *err = memmove(D, S, N); \
     if (err != D) { \
         perror("memmove"); \
