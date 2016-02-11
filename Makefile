@@ -4,14 +4,17 @@ INCLUDE = -Iinclude -Ilib
 BIN = bin/cutest
 LIBRARY = lib/libcu.a
 
-all: $(LIBRARY) $(BIN)
+all: FOLDER $(LIBRARY) $(BIN)
+
+FOLDER:
+	@mkdir -p bin
+	@mkdir -p obj
+	@mkdir -p lib
 
 $(BIN): obj/main.o $(LIBRARY)
 	$(CC) $^ -o $@ $(LDFLAGS)
 
 $(LIBRARY): obj/vector.o obj/list.o
-	@mkdir -p obj
-	@mkdir -p lib
 	@cat include/*.h >> lib/cu.h
 	$(AR) rs $@ $^
 
@@ -19,8 +22,7 @@ obj/%.o: src/%.c
 	$(CC) $(INCLUDE) $(CFLAGS) -c $< -o $@
 
 clean:
-	@rm -f lib/cu.h
-	@rm -f obj/*.o $(BIN) $(LIBRARY)
+	@rm -r lib bin obj
 
 run: $(BIN)
 	@bin/./cutest
