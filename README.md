@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/bendst/cu.svg?branch=master)](https://travis-ci.org/bendst/cu)
+
 # cu - commonly used c data structures
 The sole purpose of this repository is
 to collect commonly used c data structures in private and students projects.
