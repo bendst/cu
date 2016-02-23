@@ -1,6 +1,6 @@
 CFLAGS = -std=c99 -g -Wall
+LDFLAGS = -Llib -lcu
 INCLUDE = -Iinclude -Ilib
-#LDFLAGS =
 BIN = bin/cutest
 LIBRARY = lib/libcu.a
 
@@ -11,12 +11,12 @@ FOLDER:
 	@mkdir -p obj
 	@mkdir -p lib
 
-$(BIN): obj/main.o $(LIBRARY)
+$(BIN): obj/main.o
 	$(CC) $^ -o $@ $(LDFLAGS)
 
 $(LIBRARY): obj/vector.o obj/list.o
 	@cat include/*.h >> lib/cu.h
-	$(AR) rs $@ $^
+	$(AR) rsv $@ $^
 
 obj/%.o: src/%.c
 	$(CC) $(INCLUDE) $(CFLAGS) -c $< -o $@

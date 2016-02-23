@@ -1,5 +1,5 @@
-#ifndef CUVECTOR_H_
-#define CUVECTOR_H_
+#ifndef CU_VECTOR_H_
+#define CU_VECTOR_H_
 #include <stdlib.h>
 #include <stdbool.h>
 /**

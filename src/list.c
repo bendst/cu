@@ -1,6 +1,6 @@
-#include "list.h"
 #include <string.h>
 #include <stdio.h>
+#include "list.h"
 #include "util.h"
 
 #define LIST_INIT_ERR(L) if (L == NULL) { \

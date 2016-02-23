@@ -1,5 +1,5 @@
-#ifndef CULIST_H_
-#define  CULIST_H_
+#ifndef CU_LIST_H_
+#define  CU_LIST_H_
 #include <stdbool.h>
 #include <stdlib.h>
 
@@ -172,4 +172,4 @@ extern void *list_find(const list_t *li,
                                     const void *));
 
 
-#endif /* CULIST_H_ */
+#endif /* CU_LIST_H_ */

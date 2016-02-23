@@ -1,5 +1,5 @@
-#ifndef CUUTIL_H_
-#define CUUTIL_H_
+#ifndef CU_UTIL_H_
+#define CU_UTIL_H_
 
 /**
  * @file util.h
@@ -41,4 +41,4 @@
     {calloc(1, S);}\
 )
 
-#endif /* CUUTIL_H_ */
+#endif /* CU_UTIL_H_ */
