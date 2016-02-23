@@ -22,7 +22,7 @@ obj/%.o: src/%.c
 	$(CC) $(INCLUDE) $(CFLAGS) -c $< -o $@
 
 clean:
-	@rm -r lib bin obj
+	@rm -rf lib bin obj
 
 run: $(BIN)
 	@bin/./cutest
