@@ -4,6 +4,7 @@
 #include <string.h>
 #include "cu.h"
 
+
 void print(void *ptr) {
     int32_t data = *(int32_t *)ptr;
     printf("%d\n", data);
