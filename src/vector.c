@@ -60,7 +60,7 @@ inline void vector_push(vector_t *v, void *data) {
     VECTOR_NOT_INIT(v);
     if (v->memsize == v->count) {
         v->memsize *= 2;
-        v->data = realloc(v->data, sizeof (void *) * v->memsize);
+        v->data = realloc(v->data, sizeof(void *) * v->memsize);
     }
     v->data[v->count++] = data;
 }
