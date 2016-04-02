@@ -74,7 +74,6 @@ int main(int argc, char const *argv[]) {
     list_foreach(&l2, print);
     LIST_DEL(l2, NULL);
     /* printf("%p %p %p\n",&l2, l2.head, l2.tail ); */
-    exit(0);
 
     list_t *l1 = list_new();
     printf("list size: %ld\n", l1->size);
@@ -90,5 +89,10 @@ int main(int argc, char const *argv[]) {
      * list_filter(l1, NULL, NULL);
      * list_find(NULL, NULL, NULL);
      */
+
+    option_t opt = option(NULL);
+
+    printf("option some%d\n", opt.is_some(&opt));
+    printf("option none %d\n", opt.is_none(&opt));
     return 0;
 }

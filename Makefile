@@ -14,7 +14,7 @@ FOLDER:
 $(BIN): obj/main.o
 	$(CC) $^ -o $@ $(LDFLAGS)
 
-$(LIBRARY): obj/vector.o obj/list.o
+$(LIBRARY): obj/vector.o obj/list.o obj/option.o
 	@cat include/*.h >> lib/cu.h
 	$(AR) rsv $@ $^
 
