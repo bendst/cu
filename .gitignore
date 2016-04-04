@@ -34,3 +34,5 @@ testfiles
 
 bin
 test
+*.swp
+*.swo
