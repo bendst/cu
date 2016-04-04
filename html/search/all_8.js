@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tail',['tail',['../structlist__t.html#aadd75bfd4f098ab0aa1e6aa547f35841',1,'list_t']]]
+  ['next',['next',['../structlistnode__t.html#a491ae13687d55ddd54cc5ae4667fe4e0',1,'listnode_t']]]
 ];

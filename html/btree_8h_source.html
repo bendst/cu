@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.11"/>
-<title>cu: Data Fields</title>
+<title>cu: include/btree.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -46,8 +46,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li class="current"><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
-      <li><a href="files.html"><span>Files</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
+      <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -68,15 +68,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
-      <li><a href="classes.html"><span>Data&#160;Structure&#160;Index</span></a></li>
-      <li class="current"><a href="functions.html"><span>Data&#160;Fields</span></a></li>
-    </ul>
-  </div>
-  <div id="navrow3" class="tabs2">
-    <ul class="tablist">
-      <li class="current"><a href="functions.html"><span>All</span></a></li>
-      <li><a href="functions_vars.html"><span>Variables</span></a></li>
+      <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>Globals</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -91,7 +84,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('functions.html','');});
+$(document).ready(function(){initNavTree('btree_8h_source.html','');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -108,42 +101,21 @@ $(document).ready(function(){initNavTree('functions.html','');});
 </iframe>
 </div>
 
+<div class="header">
+  <div class="headertitle">
+<div class="title">btree.h</div>  </div>
+</div><!--header-->
 <div class="contents">
-<div class="textblock">Here is a list of all documented struct and union fields with links to the struct/union documentation for each field:</div><ul>
-<li>count
-: <a class="el" href="structvector__t.html#a76d971a3c552bc58ba9f0d5fceae9806">vector_t</a>
-</li>
-<li>data
-: <a class="el" href="structlistnode__t.html#a735984d41155bc1032e09bece8f8d66d">listnode_t</a>
-, <a class="el" href="structvector__t.html#af00cdd742d205932a8309628d39efd5e">vector_t</a>
-</li>
-<li>depth
-: <a class="el" href="structbtree__t.html#a820c167ceaaa9759b0ca2695d22db55c">btree_t</a>
-</li>
-<li>head
-: <a class="el" href="structlist__t.html#a442bdcffeda945e7439d6308a8a38bb9">list_t</a>
-</li>
-<li>memsize
-: <a class="el" href="structvector__t.html#a1fd8d6cf6c295e3ba28941c0f63894a8">vector_t</a>
-</li>
-<li>next
-: <a class="el" href="structlistnode__t.html#a491ae13687d55ddd54cc5ae4667fe4e0">listnode_t</a>
-</li>
-<li>prev
-: <a class="el" href="structlistnode__t.html#a4b114c5c941f37023b31fea9af3f48ea">listnode_t</a>
-</li>
-<li>size
-: <a class="el" href="structlist__t.html#a854352f53b148adc24983a58a1866d66">list_t</a>
-</li>
-<li>tail
-: <a class="el" href="structlist__t.html#aadd75bfd4f098ab0aa1e6aa547f35841">list_t</a>
-</li>
-</ul>
-</div><!-- contents -->
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef CU_BTREEMAP_H_</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define CU_BTREEMAP_H_</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vector_8h.html">vector.h</a>&quot;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div><div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="structbtree__t.html">    7</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <a class="code" href="structvector__t.html">vector_t</a> *node;</div><div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="structbtree__t.html#a820c167ceaaa9759b0ca2695d22db55c">   10</a></span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="structbtree__t.html#a820c167ceaaa9759b0ca2695d22db55c">depth</a>;</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;} <a class="code" href="structbtree__t.html">btree_t</a>;</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="structvector__t_html"><div class="ttname"><a href="structvector__t.html">vector_t</a></div><div class="ttdoc">vector dynamically growing array </div><div class="ttdef"><b>Definition:</b> vector.h:12</div></div>
+<div class="ttc" id="structbtree__t_html_a820c167ceaaa9759b0ca2695d22db55c"><div class="ttname"><a href="structbtree__t.html#a820c167ceaaa9759b0ca2695d22db55c">btree_t::depth</a></div><div class="ttdeci">size_t depth</div><div class="ttdef"><b>Definition:</b> btree.h:10</div></div>
+<div class="ttc" id="structbtree__t_html"><div class="ttname"><a href="structbtree__t.html">btree_t</a></div><div class="ttdef"><b>Definition:</b> btree.h:7</div></div>
+<div class="ttc" id="vector_8h_html"><div class="ttname"><a href="vector_8h.html">vector.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><b>btree.h</b></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
