@@ -3,38 +3,39 @@
 
 #include "option.h"
 
-static void *option_unwrap(const option_t *option) {
-    if (option->_options) {
-        return option->data;
+static void *option_unwrap(const option_t *self) {
+    if (self->_options) {
+        return self->data;
     } else {
         fprintf(stderr, "unwrap failed\n");
         abort();
     }
 }
 
-static void *option_unwrap_or(const option_t *option, void *alt) {
-    if (option->_options) {
-        return option->data;
+static void *option_unwrap_or(const option_t *self, void *alt) {
+    if (self->_options) {
+        return self->data;
     } else {
-        return alt;
+        option_t opt = option(alt);
+        return opt.unwrap(&opt);
     }
 }
 
-static void *option_expect(const option_t *option, const char *msg) {
-    if (option->_options) {
-        return option->data;
+static void *option_expect(const option_t *self, const char *msg) {
+    if (self->_options) {
+        return self->data;
     } else {
         fprintf(stderr, "%s\n", msg);
         abort();
     }
 }
 
-static bool option_is_some(const option_t *option) {
-    return option->_options == some;
+static bool option_is_some(const option_t *self) {
+    return self->_options == some;
 }
 
-static bool option_is_none(const option_t *option) {
-    return option->_options == none;
+static bool option_is_none(const option_t *self) {
+    return self->_options == none;
 }
 
 option_t option(void *data) {
