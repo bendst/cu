@@ -25,6 +25,8 @@ int has_int(const void *a, const void *b) {
 
 int main(int argc, char const *argv[]) {
     vector_t *v1 = new(v1);
+    list_t *l1 = new(l1);
+
     vector_t v2 = VECTOR_INIT(20);
     int32_t array[40] = {
         0
@@ -75,7 +77,6 @@ int main(int argc, char const *argv[]) {
     LIST_DEL(l2, NULL);
     /* printf("%p %p %p\n",&l2, l2.head, l2.tail ); */
 
-    list_t *l1 = new(l1);
     printf("list size: %ld\n", l1->size);
     for (size_t i = 0; i < 20; i++) {
         push(l1, &array[i]);

@@ -1,4 +1,4 @@
-CFLAGS = -std=c99 -g -Wall
+CFLAGS = -std=c11 -g -Wall
 LDFLAGS = -Llib -lcu
 INCLUDE = -Iinclude -Ilib
 BIN = bin/cutest
