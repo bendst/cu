@@ -105,6 +105,7 @@ extern void vector_insert(vector_t *v, size_t index, void *data);
  **/
 extern void vector_push(vector_t *v, void *data);
 
+extern size_t vector_len(vector_t *v);
 
 /**
  * @brief Remove the last element from the vector

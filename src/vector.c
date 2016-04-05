@@ -25,6 +25,10 @@ inline vector_t *vector_new() {
     return vector_with_cap(8);
 }
 
+inline size_t vector_len(vector_t *v) {
+    VECTOR_NOT_INIT(v);
+    return v->count;
+}
 
 inline vector_t *vector_with_cap(size_t n) {
     vector_t *v = calloc(1, sizeof(vector_t));
