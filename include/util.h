@@ -76,4 +76,24 @@
                                 list_t * : list_foreach((list_t *)x, fn) \
                                 )
 
+#define is_empty(x) _Generic((x), \
+                             vector_t * : vector_is_empty((vector_t *)x), \
+                             list_t * : list_is_empty((list_t *)x) \
+                             )
+
+#define find(x, key, pred) _Generic((x), \
+                                    vector_t * : vector_find((vector_t *)x, key, pred), \
+                                    list_t * : list_find((list_t *)x, key, pred) \
+                                    )
+
+#define insert(x, index, data) _Generic((x), \
+                                        vector_t * : vector_insert((vector_t *)x, index, data), \
+                                        list_t * : list_insert((list_t *) x, index, data) \
+                                        )
+
+#define contains(x, key, pred) _Generic((x), \
+                                        vector_t * : vector_contains((vector_t *)x, key, pred), \
+                                        list_t * : list_contains((list_t *)x, key, pred) \
+                                        )
+
 #endif /* CU_UTIL_H_ */

@@ -101,11 +101,23 @@ extern void vector_insert(vector_t *v, size_t index, void *data);
  * ~~~
  *
  *  @param v arrayList to which the data should be appended
- *  @param data pointer to add
+ *  @param Data to add
  **/
 extern void vector_push(vector_t *v, void *data);
 
-extern size_t vector_len(vector_t *v);
+/**
+ * Get the size of the vector_t
+ * @param  v vector
+ * @return Current size of the vector
+ */
+extern size_t vector_len(const vector_t *v);
+
+/**
+ * Check whether the vector is empty
+ * @param  v vector
+ * @return  Returns true if the vector is not empty, false otherwise
+ */
+extern bool vector_is_empty(const vector_t *v);
 
 /**
  * @brief Remove the last element from the vector
