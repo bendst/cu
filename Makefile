@@ -3,6 +3,7 @@ LDFLAGS = -Llib -lcu
 INCLUDE = -Iinclude -Ilib
 BIN = bin/cutest
 LIBRARY = lib/libcu.a
+CC = clang
 
 all: FOLDER $(LIBRARY) $(BIN)
 
