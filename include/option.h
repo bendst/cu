@@ -2,17 +2,17 @@
 #define  CU_OPTION_H_
 #include <stdbool.h>
 
-/** 
+/**
  *  @file option.h
- *  @brief Datatype for wrapping pointer in a safer way 
+ *  @brief Datatype for wrapping pointer in a safer way
  */
 
 /** @brief option_t wraps a pointer und does checks whether it is null.
  *
  *
- * The structure contains pointer to functions for unwrapping the data 
- * and doing checks on it. 
- * 
+ * The structure contains pointer to functions for unwrapping the data
+ * and doing checks on it.
+ *
  */
 typedef struct option_t {
     enum  {
@@ -36,7 +36,7 @@ typedef struct option_t {
  *  option_t opt = option(data);
  *  ~~~
  *
- *  @param data expects a pointer 
+ *  @param data expects a pointer
  *  @return returns a pointer struct which wraps the pointer
  */
 option_t option(void *data);
@@ -52,7 +52,7 @@ option_t option(void *data);
  *  option_t opt = option(data);
  *  void *my_data = opt.unwrap(&opt);
  *  ~~~
- *  
+ *
  *  @param self reference to option
  *  @return get the underlying data of the option
  */
@@ -69,9 +69,9 @@ void *unwrap(option_t *self);
  *  option_t opt = option(data);
  *  void *my_data = opt.expect(&opt, "Data was NULL");
  *  ~~~
- * 
+ *
  *  @param self reference to the option
- *  @param msg message to print to stderr 
+ *  @param msg message to print to stderr
  *  @return retrieve the underlying pointer
  */
 void *expect(option_t *self, const char *msg);
@@ -81,12 +81,12 @@ void *expect(option_t *self, const char *msg);
  *
  * ~~~{.c}
  *  int *data = malloc(20);
- *  int default[20] = {}; 
+ *  int default[20] = {};
  *
  *  option_t opt = option(data);
  *  void *my_data = opt.unwrap_or(&opt, default);
  * ~~~
- * 
+ *
  * @param self reference to the option_t
  * @param default_val default value to return
  * @result retrieve the underlying pointer

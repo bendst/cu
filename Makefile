@@ -1,26 +1,29 @@
-CFLAGS = -std=c99 -g -Wall
+CFLAGS = -std=c11 -g -Wall
+LDFLAGS = -Llib -lcu
 INCLUDE = -Iinclude -Ilib
-#LDFLAGS =
 BIN = bin/cutest
 LIBRARY = lib/libcu.a
+CC = clang
 
-all: $(LIBRARY) $(BIN)
+all: FOLDER $(LIBRARY) $(BIN)
 
-$(BIN): obj/main.o $(LIBRARY)
-	$(CC) $^ -o $@ $(LDFLAGS)
-
-$(LIBRARY): obj/vector.o obj/list.o
+FOLDER:
+	@mkdir -p bin
 	@mkdir -p obj
 	@mkdir -p lib
+
+$(BIN): obj/main.o
+	$(CC) $^ -o $@ $(LDFLAGS)
+
+$(LIBRARY): obj/vector.o obj/list.o obj/option.o
 	@cat include/*.h >> lib/cu.h
-	$(AR) rs $@ $^
+	$(AR) rsv $@ $^
 
 obj/%.o: src/%.c
 	$(CC) $(INCLUDE) $(CFLAGS) -c $< -o $@
 
 clean:
-	@rm -f lib/cu.h
-	@rm -f obj/*.o $(BIN) $(LIBRARY)
+	@rm -rf lib bin obj
 
 run: $(BIN)
 	@bin/./cutest

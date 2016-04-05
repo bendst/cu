@@ -9,9 +9,7 @@
 
 static inline void vector_push_front(vector_t *v, void *data) {
     VECTOR_NOT_INIT(v);
-    if (v->memsize == 0 || !v) {
-        v = vector_with_cap(8);
-    } else if (v->memsize - 1 >= v->count) {
+    if (v->memsize - 1 >= v->count) {
         memmove(v->data + 1, v->data, sizeof(void *) * v->count);
     } else {
         v->memsize *= 2;
@@ -27,6 +25,15 @@ inline vector_t *vector_new() {
     return vector_with_cap(8);
 }
 
+inline size_t vector_len(const vector_t *v) {
+    VECTOR_NOT_INIT(v);
+    return v->count;
+}
+
+inline bool vector_is_empty(const vector_t *v) {
+    VECTOR_NOT_INIT(v);
+    return vector_len(v) == 0;
+}
 
 inline vector_t *vector_with_cap(size_t n) {
     vector_t *v = calloc(1, sizeof(vector_t));
@@ -39,9 +46,7 @@ inline vector_t *vector_with_cap(size_t n) {
 
 inline void vector_insert(vector_t *v, size_t index, void *data) {
     VECTOR_NOT_INIT(v);
-    if (v->memsize == 0 || !v) {
-        v = vector_with_cap(8);
-    }
+
     if (index == 0) {
         vector_push_front(v, data);
     } else if (index > v->count) {
@@ -62,11 +67,9 @@ inline void vector_insert(vector_t *v, size_t index, void *data) {
 
 inline void vector_push(vector_t *v, void *data) {
     VECTOR_NOT_INIT(v);
-    if (v->memsize == 0 || !v) {
-        v = vector_with_cap(8);
-    } else if (v->memsize == v->count) {
+    if (v->memsize == v->count) {
         v->memsize *= 2;
-        v->data = realloc(v->data, sizeof (void *) * v->memsize);
+        v->data = realloc(v->data, sizeof(void *) * v->memsize);
     }
     v->data[v->count++] = data;
 }

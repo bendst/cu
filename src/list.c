@@ -1,6 +1,6 @@
-#include "list.h"
 #include <string.h>
 #include <stdio.h>
+#include "list.h"
 #include "util.h"
 
 #define LIST_INIT_ERR(L) if (L == NULL) { \
@@ -15,13 +15,11 @@ inline list_t *list_new() {
 inline void *list_clone(const list_t *li, void *(*clonef)(void *)) {
     list_t *clone = list_new();
     if (clonef == NULL) {
-        LIST_FOR(i, li)
-        {
+        LIST_FOR(i, li) {
             list_push_back(clone, i->data);
         }
     } else {
-        LIST_FOR(i, li)
-        {
+        LIST_FOR(i, li) {
             list_push_back(clone, clonef(i->data));
         }
     }
@@ -34,13 +32,11 @@ inline void list_clear(const list_t *li, void (*df)(void *)) {
     LIST_INIT_ERR(li);
 
     if (df == NULL) {
-        LIST_FOR(i, li)
-        {
+        LIST_FOR(i, li) {
             memset(i->data, 0, sizeof(void *));
         }
     } else {
-        LIST_FOR(i, li)
-        {
+        LIST_FOR(i, li) {
             df(i->data);
         }
     }
@@ -50,8 +46,7 @@ inline void list_clear(const list_t *li, void (*df)(void *)) {
 
 inline void list_del(list_t *li) {
     LIST_INIT_ERR(li);
-    LIST_FOR(i, li)
-    {
+    LIST_FOR(i, li) {
         free(i->prev);
     }
     free(li->tail);
@@ -64,6 +59,35 @@ inline void list_clear_del(list_t *li, void df(void *)) {
     list_del(li);
 }
 
+
+inline void list_insert(list_t *li, const size_t index, void *data) {
+    LIST_INIT_ERR(li);
+    size_t n = 0;
+
+    if (index > list_len(li)) {
+        list_push_back(li, data);
+    } else if (index == 0) {
+        list_push_front(li, data);
+    } else {
+        struct listnode_t *target = calloc(1, sizeof(struct listnode_t));
+        struct listnode_t *old = NULL;
+
+        LIST_FOR(i, li) {
+            if (n == index) {
+                old = i->next;
+                target->data = data;
+                target->next = old;
+                old->prev = target;
+                target->prev = i;
+                i->next = target;
+                break;
+            }
+            i += 1;
+        }
+        li->size += 1;
+    }
+
+}
 
 inline void list_push_back(list_t *li, void *data) {
     LIST_INIT_ERR(li);
@@ -120,18 +144,14 @@ inline bool list_is_empty(const list_t *li) {
 
 
 inline size_t list_len(const list_t *li) {
-    if (li == NULL) {
-        fprintf(stderr, "list not initialized\n");
-        return 0;
-    }
+    LIST_INIT_ERR(li);
     return li->size;
 }
 
 
 inline void list_foreach(const list_t *li, void f(void *)) {
     LIST_INIT_ERR(li);
-    LIST_FOR(i, li)
-    {
+    LIST_FOR(i, li) {
         f(i->data);
     }
 }
@@ -142,8 +162,7 @@ inline void *list_filter(const list_t *li,
                          bool (*pred)(const void *, const void *)) {
     LIST_INIT_ERR(li);
     list_t *filter_copy = list_new();
-    LIST_FOR(i, li)
-    {
+    LIST_FOR(i, li) {
         if (pred(key, i->data)) {
             list_push_back(filter_copy, i->data);
         }
@@ -157,11 +176,23 @@ inline void *list_find(const list_t *li,
                        const void *key,
                        bool pred(const void *, const void *)) {
     LIST_INIT_ERR(li);
-    LIST_FOR(i, li)
-    {
+    LIST_FOR(i, li) {
         if (pred(key, i->data)) {
             return i->data;
         }
     }
     return NULL;
+}
+
+inline bool list_contains(list_t *li,
+                          const void *key,
+                          bool (*pred)(const void *, const void *)) {
+    LIST_INIT_ERR(li);
+    LIST_FOR(i, li) {
+        if (pred(key, i->data)) {
+            return true;
+        }
+    }
+
+    return false;
 }

@@ -1,5 +1,5 @@
-#ifndef CULIST_H_
-#define  CULIST_H_
+#ifndef CU_LIST_H_
+#define  CU_LIST_H_
 #include <stdbool.h>
 #include <stdlib.h>
 
@@ -116,6 +116,14 @@ extern void list_push_back(list_t *li, void *data);
 extern void list_push_front(list_t *li, void *data);
 
 /**
+ * Insert data into the list at given position
+ * @param li    list to insert data to
+ * @param index target index
+ * @param data  data to insert
+ */
+extern void list_insert(list_t *li, const size_t index, void *data);
+
+/**
  * @brief Append another list_t to the current one.
  * @param li    list to append to
  * @param other other list
@@ -170,6 +178,15 @@ extern void *list_find(const list_t *li,
                        const void *key,
                        bool (*pred)(const void *,
                                     const void *));
+/**
+ * Check whether the list contains given key
+ * @param  li   list to search
+ * @param  key  key to check
+ * @param  pred predicate function
+ * @return      returns true if the value is in the list, false otherwise
+ */
+extern bool list_contains(list_t *li,
+                          const void *key,
+                          bool (*pred)(const void *, const void *));
 
-
-#endif /* CULIST_H_ */
+#endif /* CU_LIST_H_ */
