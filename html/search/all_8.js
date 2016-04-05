@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['next',['next',['../structlistnode__t.html#a491ae13687d55ddd54cc5ae4667fe4e0',1,'listnode_t']]]
+  ['malloc',['malloc',['../util_8h.html#a535b58ab5aa48e2e86073e334d43fd32',1,'util.h']]],
+  ['memmove',['memmove',['../util_8h.html#a2d61e4c055b9e6c718bad21ada51ccdc',1,'util.h']]],
+  ['memsize',['memsize',['../structvector__t.html#a1fd8d6cf6c295e3ba28941c0f63894a8',1,'vector_t']]]
 ];

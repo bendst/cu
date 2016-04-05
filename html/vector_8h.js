@@ -11,6 +11,8 @@ var vector_8h =
     [ "vector_foreach", "vector_8h.html#a4cc5acaac48f45ed6de41d6ae96e07ca", null ],
     [ "vector_get", "vector_8h.html#a210e4311f2ec578c745fa02b4b0dd6b9", null ],
     [ "vector_insert", "vector_8h.html#ac679d22478bc67a31f9c72bb13defa69", null ],
+    [ "vector_is_empty", "vector_8h.html#a7005a6640eeee646ef27175f3f0b7256", null ],
+    [ "vector_len", "vector_8h.html#a85a903f64ff17ac5de089263b076dfbf", null ],
     [ "vector_new", "vector_8h.html#a486d233830c907a99c33ce06bc875d0b", null ],
     [ "vector_pop", "vector_8h.html#a2ad49ac31003d73b27959508c8c1f6dc", null ],
     [ "vector_push", "vector_8h.html#a692cfdd3fd5ef36105aef9148971c21a", null ],
