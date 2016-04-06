@@ -15,6 +15,25 @@ const char *const name[] = {
 static size_t count = 0;
 
 
+static void (*deconstructor)() = NULL;
+
+static void cu_del();
+
+
+inline void cu_init(void (*delfn)()) {
+    deconstructor = delfn;
+    atexit(cu_del);
+}
+
+
+static inline void cu_del() {
+   if (deconstructor != NULL) {
+       deconstructor();
+   }
+   cu_mutex_destroy(&mut_log); 
+}
+
+
 inline void cu_mutex_init(pthread_mutex_t *restrict mutex, const pthread_mutexattr_t *restrict attr) {
     int err = pthread_mutex_init(mutex, attr);
     if (err != 0) {

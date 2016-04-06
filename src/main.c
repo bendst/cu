@@ -24,6 +24,7 @@ int has_int(const void *a, const void *b) {
 
 
 int main() {
+    cu_init(NULL);
     vector_t *v1 = cu_new(v1);
     list_t *l1 = cu_new(l1);
 
@@ -51,7 +52,7 @@ int main() {
 
 
     key = 5;
-    result = contains(v1, &key, has_int);
+    result = cu_contains(v1, &key, has_int);
     printf("HAS %d %d\n", key, result);
 
 

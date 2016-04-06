@@ -1,5 +1,6 @@
 #ifndef CU_LIST_H_
 #define  CU_LIST_H_
+
 #include <stdbool.h>
 #include <stdlib.h>
 
