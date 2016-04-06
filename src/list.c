@@ -5,7 +5,7 @@
 
 #define LIST_INIT_ERR(L) if (L == NULL) { \
         fprintf(stderr, "list not initalized"); \
-        abort(); }
+        exit(EXIT_FAILURE); }
 
 inline list_t *list_new() {
     return calloc(1, sizeof(list_t));
@@ -186,10 +186,10 @@ inline void *list_find(const list_t *li,
 
 inline bool list_contains(list_t *li,
                           const void *key,
-                          bool (*pred)(const void *, const void *)) {
+                          int (*pred)(const void *, const void *)) {
     LIST_INIT_ERR(li);
     LIST_FOR(i, li) {
-        if (pred(key, i->data)) {
+        if (pred(key, i->data) == 0) {
             return true;
         }
     }

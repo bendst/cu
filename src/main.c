@@ -23,7 +23,7 @@ int has_int(const void *a, const void *b) {
 }
 
 
-int main(int argc, char const *argv[]) {
+int main() {
     vector_t *v1 = new(v1);
     list_t *l1 = new(l1);
 
@@ -36,9 +36,9 @@ int main(int argc, char const *argv[]) {
     }
     for (size_t i = 0; i < 20; i++) {
         push(v1, &array[i]);
-        vector_insert(&v2, 0, &array[i]);
-        vector_insert(&v2, 20, &array[i]);
-        vector_insert(&v2, 40, &array[i]);
+        insert(&v2, 0, &array[i]);
+        insert(&v2, 20, &array[i]);
+        insert(&v2, 40, &array[i]);
     }
 
     /* vector_foreach(v1, print); */
@@ -46,12 +46,12 @@ int main(int argc, char const *argv[]) {
 
     VECTOR_DEL(v2, NULL);
     int key = 21;
-    int result = vector_contains(v1, &key, has_int);
+    int result = contains(v1, &key, has_int);
     printf("HAS %d %d\n", key, result);
 
 
     key = 5;
-    result = vector_contains(v1, &key, has_int);
+    result = contains(v1, &key, has_int);
     printf("HAS %d %d\n", key, result);
 
 
@@ -95,5 +95,14 @@ int main(int argc, char const *argv[]) {
 
     printf("option some%d\n", opt.is_some(&opt));
     printf("option none %d\n", opt.is_none(&opt));
+
+    cu_log_level(WARNING);
+    cu_log_target(stdout);
+
+    cu_log(ALL, "Hallo");
+    cu_log(INFO, "Hallo");
+    cu_log(WARNING, "Hallo");
+    cu_log(ERROR, "Hallo"); 
+    cu_log(FATAL, "Hallo");
     return 0;
 }
