@@ -24,8 +24,8 @@ int has_int(const void *a, const void *b) {
 
 
 int main() {
-    vector_t *v1 = new(v1);
-    list_t *l1 = new(l1);
+    vector_t *v1 = cu_new(v1);
+    list_t *l1 = cu_new(l1);
 
     vector_t v2 = VECTOR_INIT(20);
     int32_t array[40] = {
@@ -35,18 +35,18 @@ int main() {
         array[i] = i;
     }
     for (size_t i = 0; i < 20; i++) {
-        push(v1, &array[i]);
-        insert(&v2, 0, &array[i]);
-        insert(&v2, 20, &array[i]);
-        insert(&v2, 40, &array[i]);
+        cu_push(v1, &array[i]);
+        cu_insert(&v2, 0, &array[i]);
+        cu_insert(&v2, 20, &array[i]);
+        cu_insert(&v2, 40, &array[i]);
     }
 
     /* vector_foreach(v1, print); */
-    foreach(&v2, print);
+    cu_foreach(&v2, print);
 
     VECTOR_DEL(v2, NULL);
     int key = 21;
-    int result = contains(v1, &key, has_int);
+    int result = cu_contains(v1, &key, has_int);
     printf("HAS %d %d\n", key, result);
 
 
@@ -58,34 +58,34 @@ int main() {
     vector_sort(v1, reverse_order);
     printf("sort\n");
     vector_remove(v1, 2, NULL);
-    foreach(v1, print);
+    cu_foreach(v1, print);
 
 
-    del(v1);
+    cu_del(v1);
 
 
     list_t l2 = LIST_INIT;
     printf("%p %p %p\n", &l2, l2.head, l2.tail);
     printf("list size: %ld\n", l2.size);
     for (size_t i = 21; i < 40; i++) {
-        push(&l2, &array[i]);
+        cu_push(&l2, &array[i]);
     }
     printf("list size: %ld\n", l2.size);
 
 
-    foreach(&l2, print);
+    cu_foreach(&l2, print);
     LIST_DEL(l2, NULL);
     /* printf("%p %p %p\n",&l2, l2.head, l2.tail ); */
 
     printf("list size: %ld\n", l1->size);
     for (size_t i = 0; i < 20; i++) {
-        push(l1, &array[i]);
+        cu_push(l1, &array[i]);
     }
     printf("list size: %ld\n", l1->size);
 
 
-    foreach(l1, print);
-    del(l1);
+    cu_foreach(l1, print);
+    cu_del(l1);
     /*
      * list_filter(l1, NULL, NULL);
      * list_find(NULL, NULL, NULL);
