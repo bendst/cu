@@ -1,5 +1,6 @@
 #ifndef CU_OPTION_H_
 #define  CU_OPTION_H_
+
 #include <stdbool.h>
 
 /**

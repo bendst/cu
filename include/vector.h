@@ -1,7 +1,9 @@
 #ifndef CU_VECTOR_H_
 #define CU_VECTOR_H_
+
 #include <stdlib.h>
 #include <stdbool.h>
+
 /**
  * @file vector.h
  */
