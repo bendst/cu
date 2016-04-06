@@ -102,14 +102,18 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="contents">
 <div class="textblock"><p>The CU Library contains various helper functions and datastructure.</p>
 <h3>Noteworthy</h3>
-<p>Most functions for the data structures are redefined in <a href="util_8h.html">util</a> as generic function using the c11 _Generic Macro.</p>
+<p>Most functions for the data structures are defined in <a href="generic_8h.html">generic.h</a> as generic function using the c11 _Generic Macro.</p>
 <h2>Usage</h2>
-<h2>Module</h2>
+<p>Compile the library using Makefile provided,</p>
+<p>it will generated a approperiate <code>cu.h</code> and a <code>libcu.a</code> in <code>lib</code> Folder.</p>
+<p>To use the cu library set -lcu Flag in your project.</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;cu.h&quot;</span></div><div class="line"></div><div class="line"><span class="keywordtype">void</span> deconstruct() {</div><div class="line"></div><div class="line">}</div><div class="line"></div><div class="line"><span class="keywordtype">int</span> main() {</div><div class="line">    <a class="code" href="util_8h.html#aa979060e747ebd05a85b9b7b73448b64">cu_init</a>(deconstruct);</div><div class="line"></div><div class="line">    <a class="code" href="structvector__t.html">vector_t</a> *v = <span class="keyword">new</span>(v);</div><div class="line">    ....</div><div class="line">}</div></div><!-- fragment --><h2>Module</h2>
 <p>Following modules are provided:</p><ul>
 <li><a href="list_8h.html">dopply linked list</a></li>
 <li><a href="vector_8h.html">a continuous vector</a></li>
 <li><a href="option_8h.html">option type</a></li>
-<li><a href="util_8h.html">various utility function</a> </li>
+<li><a href="util_8h.html">various utility function</a></li>
+<li><a href="generic_8h.html">generic defines</a> </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
