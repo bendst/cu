@@ -1,6 +1,10 @@
 #ifndef CU_UTIL_H_
 #define CU_UTIL_H_
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+
 /**
  * @file util.h
  * @brief Contains various helper functions
@@ -40,6 +44,100 @@
 #define malloc(S) ( \
         {calloc(1, S); } \
         )
+
+/**
+ * @brief Levels of Logging
+ */
+enum Log {
+    ALL,
+    INFO,
+    WARNING,
+    ERROR,
+    FATAL
+};
+
+
+/** 
+ * @brief Set the logging target.
+ * @param fd Target File Descriptor
+ */
+extern void cu_log_target(FILE *fd);
+
+
+/**
+ * @brief Set the logging Level.
+ * @param level Desired logging level
+ */
+extern void cu_log_level(enum Log level);
+
+
+/**
+ * @brief Print a log to target.
+ * @param level Level of the Message
+ * @param msg Message to print 
+ */
+extern void cu_log(enum Log level, const char *msg);
+
+
+/**
+ * @brief Wrapper around pthread_mutex_init() with error handling.
+ * @param mutex Mutex
+ * @param attr Attribute
+ */
+extern void cu_mutex_init(pthread_mutex_t *restrict mutex, const pthread_mutexattr_t *restrict attr);
+
+
+/**
+ * @brief Wrapper around pthread_mutex_lock() with error handling.
+ * @param mutex Mutex
+ */
+extern void cu_mutex_lock(pthread_mutex_t *mutex);
+
+
+/**
+ * @brief Wrapper around pthread_mutex_unlock() with error handling.
+ * @param mutex Mutex
+ */
+extern void cu_mutex_unlock(pthread_mutex_t *mutex);
+
+
+/**
+ * @brief Wrapper around pthread_mutex_destroy() with error handling.
+ * @param mutex Mutex
+ */
+extern void cu_mutex_destroy(pthread_mutex_t *mutex);
+
+
+/**
+ * @brief Wrapper around pthread_thread_create() with error handling.
+ * @param thread Thread
+ * @param attr Attribute
+ * @param handle Handle Function
+ * @param arg Argument
+ */
+extern void cu_thread(pthread_t *thread, const pthread_attr_t *attr, void *(*handle)(void *), void *arg);
+
+
+/**
+ * @brief Wrapper around pthread_exit()
+ * @param retval Return value
+ */
+extern void cu_thread_exit(void *retval);
+
+
+/**
+ * @brief Wrapper around pthread_join() with error handling.
+ * @param thread Thread
+ * @param retval Return Value
+ */
+extern void cu_thread_join(pthread_t thread, void **retval);
+
+
+/** 
+ * @brief Wrapper around pthread_cancel() with error handling.
+ * @param thread Thread
+ */
+extern void cu_thread_cancel(pthread_t thread);
 
 
 #define push(x, y) _Generic((x), \

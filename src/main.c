@@ -95,5 +95,14 @@ int main() {
 
     printf("option some%d\n", opt.is_some(&opt));
     printf("option none %d\n", opt.is_none(&opt));
+
+    cu_log_level(WARNING);
+    cu_log_target(stdout);
+
+    cu_log(ALL, "Hallo");
+    cu_log(INFO, "Hallo");
+    cu_log(WARNING, "Hallo");
+    cu_log(ERROR, "Hallo"); 
+    cu_log(FATAL, "Hallo");
     return 0;
 }

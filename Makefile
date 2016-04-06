@@ -1,4 +1,4 @@
-CFLAGS = -std=c11 -g -Wall
+CFLAGS = -std=c11 -g -Wall 
 LDFLAGS = -Llib -lcu
 INCLUDE = -Iinclude -Ilib
 BIN = bin/cutest
@@ -13,9 +13,9 @@ FOLDER:
 	@mkdir -p lib
 
 $(BIN): obj/main.o
-	$(CC) $^ -o $@ $(LDFLAGS)
+	$(CC) -pthread $^ -o $@ $(LDFLAGS)
 
-$(LIBRARY): obj/vector.o obj/list.o obj/option.o
+$(LIBRARY): obj/vector.o obj/list.o obj/option.o obj/util.o
 	@cat include/*.h >> lib/cu.h
 	$(AR) rsv $@ $^
 
