@@ -8,7 +8,7 @@ static void *option_unwrap(const option_t *self) {
         return self->data;
     } else {
         fprintf(stderr, "unwrap failed\n");
-        abort();
+        exit(EXIT_FAILURE);
     }
 }
 
@@ -26,7 +26,7 @@ static void *option_expect(const option_t *self, const char *msg) {
         return self->data;
     } else {
         fprintf(stderr, "%s\n", msg);
-        abort();
+        exit(EXIT_FAILURE);
     }
 }
 

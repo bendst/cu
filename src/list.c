@@ -5,7 +5,7 @@
 
 #define LIST_INIT_ERR(L) if (L == NULL) { \
         fprintf(stderr, "list not initalized"); \
-        abort(); }
+        exit(EXIT_FAILURE); }
 
 inline list_t *list_new() {
     return calloc(1, sizeof(list_t));

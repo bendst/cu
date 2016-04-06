@@ -15,7 +15,7 @@
 #define memmove(D, S, N) void *err = memmove(D, S, N); \
     if (err != D) { \
         perror("memmove"); \
-        abort(); \
+        exit(EXIT_FAILURE); \
     }
 
 /**
@@ -28,7 +28,7 @@
         void *ptr = calloc(NM, S); \
         if (ptr == NULL) { \
             perror("calloc"); \
-            abort(); \
+            exit(EXIT_FAILURE); \
         } \
         ptr; \
     })
