@@ -177,8 +177,8 @@ Functions</h2></td></tr>
 <tr class="memitem:a597ad03922fcfe0a854d82e82f17f1ac"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a597ad03922fcfe0a854d82e82f17f1ac">list_find</a> (const <a class="el" href="structlist__t.html">list_t</a> *li, const void *key, bool(*pred)(const void *, const void *))</td></tr>
 <tr class="memdesc:a597ad03922fcfe0a854d82e82f17f1ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find a element in the list.  <a href="#a597ad03922fcfe0a854d82e82f17f1ac">More...</a><br /></td></tr>
 <tr class="separator:a597ad03922fcfe0a854d82e82f17f1ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9cbb4f1d4b5c1e948a183ec2abc5d300"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a9cbb4f1d4b5c1e948a183ec2abc5d300">list_contains</a> (<a class="el" href="structlist__t.html">list_t</a> *li, const void *key, bool(*pred)(const void *, const void *))</td></tr>
-<tr class="separator:a9cbb4f1d4b5c1e948a183ec2abc5d300"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a840748bb0bf0b80ffd285aafa666ddfa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a840748bb0bf0b80ffd285aafa666ddfa">list_contains</a> (<a class="el" href="structlist__t.html">list_t</a> *li, const void *key, int(*pred)(const void *, const void *))</td></tr>
+<tr class="separator:a840748bb0bf0b80ffd285aafa666ddfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Interface of a dopply linked list </p>
@@ -415,7 +415,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a9cbb4f1d4b5c1e948a183ec2abc5d300"></a>
+<a class="anchor" id="a840748bb0bf0b80ffd285aafa666ddfa"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -434,7 +434,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool(*)(const void *, const void *)&#160;</td>
+          <td class="paramtype">int(*)(const void *, const void *)&#160;</td>
           <td class="paramname"><em>pred</em>&#160;</td>
         </tr>
         <tr>
