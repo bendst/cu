@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['cu_5finit',['cu_init',['../util_8h.html#aa979060e747ebd05a85b9b7b73448b64',1,'util.h']]],
   ['cu_5flog',['cu_log',['../util_8h.html#abf3e3bc1cb6ff5c750d4bcc5cd8f6499',1,'util.h']]],
   ['cu_5flog_5flevel',['cu_log_level',['../util_8h.html#a05f558a76e12ff9e879d3fc50d1f8957',1,'util.h']]],
   ['cu_5flog_5ftarget',['cu_log_target',['../util_8h.html#a7c7d3d1a538b4b653fbd3e3becff8997',1,'util.h']]],

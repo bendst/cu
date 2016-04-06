@@ -1,17 +1,6 @@
 var util_8h =
 [
     [ "calloc", "util_8h.html#a5ccc0589ed59f1ecd4a36d38d58f44eb", null ],
-    [ "cu_clear", "util_8h.html#a014e14a88c6628de5a3e0553a58d9bdf", null ],
-    [ "cu_clear_del", "util_8h.html#a138dac40254fff610a543e5f254d0d6d", null ],
-    [ "cu_contains", "util_8h.html#a010ddff1ba3eb09c68e915f092cdeddf", null ],
-    [ "cu_del", "util_8h.html#a81bd8b4afcc86c7892e486f05a593c2f", null ],
-    [ "cu_find", "util_8h.html#acf08992f03f435ab2f5d83523f760c03", null ],
-    [ "cu_foreach", "util_8h.html#a7b5dcffac049ad0ea93ac4f0db156088", null ],
-    [ "cu_insert", "util_8h.html#a31822a7a6e2fb06b65535cd7a7f70240", null ],
-    [ "cu_is_empty", "util_8h.html#ab4f6f0ac702124d14e7b7cd456cc5eec", null ],
-    [ "cu_len", "util_8h.html#a0bcd47432a6b9c857bea3ac934a4f7db", null ],
-    [ "cu_new", "util_8h.html#a326ea73b9b75dcf28647a6e87186a74e", null ],
-    [ "cu_push", "util_8h.html#afa6f999ef237f90c950b23e9f4df7954", null ],
     [ "malloc", "util_8h.html#a535b58ab5aa48e2e86073e334d43fd32", null ],
     [ "memmove", "util_8h.html#a2d61e4c055b9e6c718bad21ada51ccdc", null ],
     [ "Log", "util_8h.html#af31ef15863cb3c9383790dc16c3f2304", [
@@ -21,6 +10,7 @@ var util_8h =
       [ "ERROR", "util_8h.html#af31ef15863cb3c9383790dc16c3f2304a2fd6f336d08340583bd620a7f5694c90", null ],
       [ "FATAL", "util_8h.html#af31ef15863cb3c9383790dc16c3f2304a651d8a47a6976d6fe05c0e03fb4cd2d0", null ]
     ] ],
+    [ "cu_init", "util_8h.html#aa979060e747ebd05a85b9b7b73448b64", null ],
     [ "cu_log", "util_8h.html#abf3e3bc1cb6ff5c750d4bcc5cd8f6499", null ],
     [ "cu_log_level", "util_8h.html#a05f558a76e12ff9e879d3fc50d1f8957", null ],
     [ "cu_log_target", "util_8h.html#a7c7d3d1a538b4b653fbd3e3becff8997", null ],
