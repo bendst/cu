@@ -16,7 +16,7 @@ $(BIN): obj/main.o
 	$(CC) -pthread $^ -o $@ $(LDFLAGS)
 
 $(LIBRARY): obj/vector.o obj/list.o obj/option.o obj/util.o
-	@cat include/*.h >> lib/cu.h
+	@cat include/*.h | grep -Pv '^(.\*)' >> lib/cu.h
 	$(AR) rsv $@ $^
 
 obj/%.o: src/%.c
