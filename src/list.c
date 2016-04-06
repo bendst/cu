@@ -186,10 +186,10 @@ inline void *list_find(const list_t *li,
 
 inline bool list_contains(list_t *li,
                           const void *key,
-                          bool (*pred)(const void *, const void *)) {
+                          int (*pred)(const void *, const void *)) {
     LIST_INIT_ERR(li);
     LIST_FOR(i, li) {
-        if (pred(key, i->data)) {
+        if (pred(key, i->data) == 0) {
             return true;
         }
     }

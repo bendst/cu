@@ -187,6 +187,6 @@ extern void *list_find(const list_t *li,
  */
 extern bool list_contains(list_t *li,
                           const void *key,
-                          bool (*pred)(const void *, const void *));
+                          int (*pred)(const void *, const void *));
 
 #endif /* CU_LIST_H_ */
