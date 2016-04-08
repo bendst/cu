@@ -49,7 +49,7 @@
 /**
  * @brief Levels of Logging
  */
-enum Log {
+enum log {
     ALL,
     INFO,
     WARNING,
@@ -58,7 +58,7 @@ enum Log {
 };
 
 
-/** 
+/**
  * @brief Set the logging target.
  * @param fd Target File Descriptor
  */
@@ -69,15 +69,15 @@ extern void cu_log_target(FILE *fd);
  * @brief Set the logging Level.
  * @param level Desired logging level
  */
-extern void cu_log_level(enum Log level);
+extern void cu_log_level(enum log level);
 
 
 /**
  * @brief Print a log to target.
  * @param level Level of the Message
- * @param msg Message to print 
+ * @param msg Message to print
  */
-extern void cu_log(enum Log level, const char *msg);
+extern void cu_log(enum log level, const char *msg);
 
 /**
  * @brief initializing function for cu internals
@@ -85,34 +85,79 @@ extern void cu_log(enum Log level, const char *msg);
  */
 extern void cu_init(void (*delfn)());
 
+/**
+ *  @brief Structure for wrapping a generic object with a mutex
+ */
+typedef struct {
+    pthread_mutex_t mutex;
+    void *inner;
+} mutex_t;
+
+
+/**
+ * @brief Initialize a CU mutex
+ *
+ * ~~~{.c}
+ * struct complex_object {...};
+ *
+ *
+ * ~~~
+ *
+ * @param mutex pthread mutex
+ * @param inner data to surround with a mutex
+ * @result a mutex_t obj
+ */
+extern mutex_t cu_mutex_new(void *inner);
+
+
+/** @brief Destroy a cu mutex_t object and the data
+ *  @param mutex to destroy
+ *
+ */
+extern void cu_mutex_del(mutex_t *mutex, void (*del)(void *));
+
+/**
+ * @brief lock the mutex and get access to the data
+ * @param mutex mutex to lock
+ * @result locked data
+ */
+extern void *cu_lock(mutex_t *mutex);
+
+
+/**
+ * @brief Unlock a mutex_t object
+ * @param mutex to lock
+ */
+extern void cu_unlock(mutex_t *mutex);
+
 
 /**
  * @brief Wrapper around pthread_mutex_init() with error handling.
  * @param mutex Mutex
  * @param attr Attribute
  */
-extern void cu_mutex_init(pthread_mutex_t *restrict mutex, const pthread_mutexattr_t *restrict attr);
+extern void mutex_init(pthread_mutex_t *restrict mutex, const pthread_mutexattr_t *restrict attr);
 
 
 /**
  * @brief Wrapper around pthread_mutex_lock() with error handling.
  * @param mutex Mutex
  */
-extern void cu_mutex_lock(pthread_mutex_t *mutex);
+extern void mutex_lock(pthread_mutex_t *mutex);
 
 
 /**
  * @brief Wrapper around pthread_mutex_unlock() with error handling.
  * @param mutex Mutex
  */
-extern void cu_mutex_unlock(pthread_mutex_t *mutex);
+extern void mutex_unlock(pthread_mutex_t *mutex);
 
 
 /**
  * @brief Wrapper around pthread_mutex_destroy() with error handling.
  * @param mutex Mutex
  */
-extern void cu_mutex_destroy(pthread_mutex_t *mutex);
+extern void mutex_destroy(pthread_mutex_t *mutex);
 
 
 /**
@@ -122,14 +167,14 @@ extern void cu_mutex_destroy(pthread_mutex_t *mutex);
  * @param handle Handle Function
  * @param arg Argument
  */
-extern void cu_thread(pthread_t *thread, const pthread_attr_t *attr, void *(*handle)(void *), void *arg);
+extern void thread(pthread_t *thread, const pthread_attr_t *attr, void *(*handle)(void *), void *arg);
 
 
 /**
  * @brief Wrapper around pthread_exit()
  * @param retval Return value
  */
-extern void cu_thread_exit(void *retval);
+extern void thread_exit(void *retval);
 
 
 /**
@@ -137,13 +182,13 @@ extern void cu_thread_exit(void *retval);
  * @param thread Thread
  * @param retval Return Value
  */
-extern void cu_thread_join(pthread_t thread, void **retval);
+extern void thread_join(pthread_t thread, void **retval);
 
 
-/** 
+/**
  * @brief Wrapper around pthread_cancel() with error handling.
  * @param thread Thread
  */
-extern void cu_thread_cancel(pthread_t thread);
+extern void thread_cancel(pthread_t thread);
 
 #endif /* CU_UTIL_H_ */
