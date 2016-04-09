@@ -86,7 +86,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="#index_e"><span>e</span></a></li>
       <li><a href="#index_i"><span>i</span></a></li>
       <li><a href="#index_l"><span>l</span></a></li>
+      <li><a href="#index_m"><span>m</span></a></li>
       <li><a href="#index_o"><span>o</span></a></li>
+      <li><a href="#index_t"><span>t</span></a></li>
       <li><a href="#index_u"><span>u</span></a></li>
       <li class="current"><a href="#index_v"><span>v</span></a></li>
     </ul>
@@ -127,38 +129,35 @@ $(document).ready(function(){initNavTree('globals_func.html','');});
 <li>cu_init()
 : <a class="el" href="util_8h.html#aa979060e747ebd05a85b9b7b73448b64">util.h</a>
 </li>
+<li>cu_join()
+: <a class="el" href="sync_8h.html#ab800c87ec812aa9d075a352d5e0d7288">sync.h</a>
+</li>
+<li>cu_lock()
+: <a class="el" href="sync_8h.html#adf76aca9fe43237ddb1125573b1c4cc9">sync.h</a>
+</li>
 <li>cu_log()
-: <a class="el" href="util_8h.html#abf3e3bc1cb6ff5c750d4bcc5cd8f6499">util.h</a>
+: <a class="el" href="util_8h.html#a4b2df795003b85d1d76c83c6e6dbf5a3">util.h</a>
 </li>
 <li>cu_log_level()
-: <a class="el" href="util_8h.html#a05f558a76e12ff9e879d3fc50d1f8957">util.h</a>
+: <a class="el" href="util_8h.html#af3ac15f86d2dd3494cc5e18468f97022">util.h</a>
 </li>
 <li>cu_log_target()
 : <a class="el" href="util_8h.html#a7c7d3d1a538b4b653fbd3e3becff8997">util.h</a>
 </li>
-<li>cu_mutex_destroy()
-: <a class="el" href="util_8h.html#a16985a4fc634a0bbe06eaac67b815ae1">util.h</a>
+<li>cu_mutex_del()
+: <a class="el" href="sync_8h.html#a3ac9c05f9ec9256e87e2be1fb6fa1203">sync.h</a>
 </li>
-<li>cu_mutex_init()
-: <a class="el" href="util_8h.html#adf40972f6826959d62953de3d699ca0e">util.h</a>
+<li>cu_mutex_new()
+: <a class="el" href="sync_8h.html#ab80a0396c63e2990b24eda59b52baefa">sync.h</a>
 </li>
-<li>cu_mutex_lock()
-: <a class="el" href="util_8h.html#aa0d676d2f0964f89a5a43d70f2789158">util.h</a>
+<li>cu_spawn()
+: <a class="el" href="sync_8h.html#a047421ed6290b791b2489b2aab5bf28e">sync.h</a>
 </li>
-<li>cu_mutex_unlock()
-: <a class="el" href="util_8h.html#ae29f960208c5c6a0a8c93267243a4946">util.h</a>
+<li>cu_thread_new()
+: <a class="el" href="sync_8h.html#a643de99d640b6666e19a66df0d99c2e5">sync.h</a>
 </li>
-<li>cu_thread()
-: <a class="el" href="util_8h.html#a230f9dca250d2bf9f49900e29f932db9">util.h</a>
-</li>
-<li>cu_thread_cancel()
-: <a class="el" href="util_8h.html#ad5201bd27529adb382a2c701d29f66a7">util.h</a>
-</li>
-<li>cu_thread_exit()
-: <a class="el" href="util_8h.html#ab14cc31bc76b1ca756ebe24107a8a6a6">util.h</a>
-</li>
-<li>cu_thread_join()
-: <a class="el" href="util_8h.html#afa73b128bb9e196b4305bdbbb04de41a">util.h</a>
+<li>cu_unlock()
+: <a class="el" href="sync_8h.html#a4fb904ade831a98ef8f8735f3bc4e0d3">sync.h</a>
 </li>
 </ul>
 
@@ -229,9 +228,41 @@ $(document).ready(function(){initNavTree('globals_func.html','');});
 </ul>
 
 
+<h3><a class="anchor" id="index_m"></a>- m -</h3><ul>
+<li>mutex_destroy()
+: <a class="el" href="sync_8h.html#af4468977a4ad4c93a3cb3f12adae4346">sync.h</a>
+</li>
+<li>mutex_init()
+: <a class="el" href="sync_8h.html#aff4ff0f3667a3c7ced27883cca74fae6">sync.h</a>
+</li>
+<li>mutex_lock()
+: <a class="el" href="sync_8h.html#adb4bd83c4cf0235fce9af9c40aa40f0f">sync.h</a>
+</li>
+<li>mutex_unlock()
+: <a class="el" href="sync_8h.html#a16644766ccc5f305c4c92b7c7ca6e338">sync.h</a>
+</li>
+</ul>
+
+
 <h3><a class="anchor" id="index_o"></a>- o -</h3><ul>
 <li>option()
 : <a class="el" href="option_8h.html#a688e98632db35661b775f439224340e0">option.h</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_t"></a>- t -</h3><ul>
+<li>thread_cancel()
+: <a class="el" href="sync_8h.html#a1b3cb53565eabe02a36e000e5244dfd1">sync.h</a>
+</li>
+<li>thread_exit()
+: <a class="el" href="sync_8h.html#a19b16adf05364471bae2840aa564329a">sync.h</a>
+</li>
+<li>thread_join()
+: <a class="el" href="sync_8h.html#a246f64ce75aa797e9c63584abd0ae3d4">sync.h</a>
+</li>
+<li>thread_new()
+: <a class="el" href="sync_8h.html#afd5e0b381f135010a2a385f362ca5847">sync.h</a>
 </li>
 </ul>
 

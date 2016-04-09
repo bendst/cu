@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['option',['option',['../option_8h.html#a688e98632db35661b775f439224340e0',1,'option.h']]],
-  ['option_2eh',['option.h',['../option_8h.html',1,'']]],
-  ['option_5ft',['option_t',['../structoption__t.html',1,'']]]
+  ['next',['next',['../structlistnode__t.html#a491ae13687d55ddd54cc5ae4667fe4e0',1,'listnode_t']]]
 ];
