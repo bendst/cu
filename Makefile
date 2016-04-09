@@ -4,7 +4,7 @@ INCLUDE = -Iinclude -Ilib
 BIN = bin/cutest
 LIBRARY = lib/libcu.a
 CC = clang
-
+OBJ = obj/vector.o obj/list.o obj/option.o obj/util.o obj/sync.o
 all: FOLDER $(LIBRARY) $(BIN)
 
 FOLDER:
@@ -15,7 +15,7 @@ FOLDER:
 $(BIN): obj/main.o
 	$(CC) -pthread $^ -o $@ $(LDFLAGS)
 
-$(LIBRARY): obj/vector.o obj/list.o obj/option.o obj/util.o
+$(LIBRARY): $(OBJ) 
 	@cat include/*.h | grep -Pv '^(.\*)' >> lib/cu.h
 	$(AR) rsv $@ $^
 

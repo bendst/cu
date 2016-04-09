@@ -1,6 +1,11 @@
 #ifndef CU_GENERIC_H_
 #define CU_GENERIC_H_ 
 
+/**
+ * @file generic.h
+ * @brief Provides generic functions for the data structures
+ */
+
 #define cu_push(x, y) _Generic((x), \
                             vector_t * : vector_push((vector_t *)x, y), \
                             list_t * : list_push_back((list_t *)x, y) \
@@ -8,7 +13,7 @@
 
 #define cu_new(x) _Generic((x), \
                         vector_t * : vector_new(), \
-                        list_t * : list_new() \
+                        list_t * : list_new()\
                         )
 
 #define cu_clear(x, fn) _Generic((x), \
