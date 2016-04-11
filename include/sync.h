@@ -1,6 +1,6 @@
-#ifndef CU_SYNC
-#define CU_SYNC
-#include<pthread.h>
+#ifndef CU_SYNC_H_
+#define CU_SYNC_H_
+#include <pthread.h>
 
 /**
  *  @file sync.h
@@ -151,4 +151,4 @@ extern void thread_cancel(pthread_t thread);
 extern void attr_init(pthread_attr_t *attr);
 extern void attr_destory(pthread_attr_t *attr);
 
-#endif /* ifndef CU_SYNC */
+#endif /* ifndef CU_SYNC_H_ */

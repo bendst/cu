@@ -1,36 +1,57 @@
-CFLAGS = -std=c11 -g -Wall 
-LDFLAGS = -Llib -lcu
-INCLUDE = -Iinclude -Ilib
-BIN = bin/cutest
-LIBRARY = lib/libcu.a
-CC = clang
-OBJ = obj/vector.o obj/list.o obj/option.o obj/util.o obj/sync.o
-all: FOLDER $(LIBRARY) $(BIN)
+TARGET=cutest
+TARGET_BUILD=debug
+OUTPUT_OPTION=-o $(subst src,obj,$@)
+MODS=vector list option util sync
+CFLAGS=-Iinclude -Ilib -Wall -Wextra -std=gnu11
+LDFLAGS=-pthread lib/libcu.a
+OBJ=$(addprefix obj/, $(addsuffix .o, $(MODS)))
 
-FOLDER:
-	@mkdir -p bin
+.SUFFIXES:
+.SUFFIXES: .c .o .h .a
+
+.SECONDARY: $(OBJ)
+
+help: debug 
+
+ifeq ($(TARGET_BUILD), debug)
+CFLAGS+=-g3
+endif
+
+ifeq ($(TARGET_BUILD), release)
+CFLAGS+=-O2 -DNDEBUG
+endif
+
+all: prep lib target/$(TARGET_BUILD)/$(TARGET) 
+
+.PHONEY: prep
+prep:
 	@mkdir -p obj
 	@mkdir -p lib
-
-$(BIN): obj/main.o
-	$(CC) -pthread $^ -o $@ $(LDFLAGS)
-
-$(LIBRARY): $(OBJ) 
+	@mkdir -p target/$(TARGET_BUILD)
+	@mkdir -p src
 	@cat include/*.h | grep -Pv '^(.\*)' >> lib/cu.h
-	$(AR) rsv $@ $^
 
-obj/%.o: src/%.c
-	$(CC) $(INCLUDE) $(CFLAGS) -c $< -o $@
+
+.PHONEY: debug
+debug:
+	@$(MAKE) TARGET_BUILD=debug all
+
+.PHONEY: release
+release:
+	@$(MAKE) TARGET_BUILD=release  all
+
+target/$(TARGET_BUILD)/$(TARGET): obj/main.o 
+	$(CC) -o $@ $^ $(LDFLAGS)
+
+.PHONEY: lib
+lib: lib/libcu.a($(OBJ))
+
+obj/%: src/%;
 
 clean:
-	@rm -rf lib bin obj
+	@$(RM) obj/*
 
-run: $(BIN)
-	@bin/./cutest
+clobber:
+	@$(MAKE) clean
+	@$(RM) -r target
 
-test: $(LIBRARY)
-	@cd test;
-	$(MAKE)
-
-val: $(BIN)
-	@valgrind --leak-check=full bin/./cutest

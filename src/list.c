@@ -3,16 +3,15 @@
 #include "list.h"
 #include "util.h"
 
-#define LIST_INIT_ERR(L) if (L == NULL) { \
-        fprintf(stderr, "list not initalized"); \
-        exit(EXIT_FAILURE); }
+#define LIST_INIT_ERR(L) null_err(L, "list not initialized")
 
-inline list_t *list_new() {
+
+list_t *list_new() {
     return calloc(1, sizeof(list_t));
 }
 
 
-inline void *list_clone(const list_t *li, void *(*clonef)(void *)) {
+void *list_clone(const list_t *li, void *(*clonef)(void *)) {
     list_t *clone = list_new();
     if (clonef == NULL) {
         LIST_FOR(i, li) {
@@ -28,7 +27,7 @@ inline void *list_clone(const list_t *li, void *(*clonef)(void *)) {
 }
 
 
-inline void list_clear(const list_t *li, void (*df)(void *)) {
+void list_clear(const list_t *li, void (*df)(void *)) {
     LIST_INIT_ERR(li);
 
     if (df == NULL) {
@@ -44,7 +43,7 @@ inline void list_clear(const list_t *li, void (*df)(void *)) {
 }
 
 
-inline void list_del(list_t *li) {
+void list_del(list_t *li) {
     LIST_INIT_ERR(li);
     LIST_FOR(i, li) {
         free(i->prev);
@@ -54,13 +53,13 @@ inline void list_del(list_t *li) {
 }
 
 
-inline void list_clear_del(list_t *li, void df(void *)) {
+void list_clear_del(list_t *li, void df(void *)) {
     list_clear(li, df);
     list_del(li);
 }
 
 
-inline void list_insert(list_t *li, const size_t index, void *data) {
+void list_insert(list_t *li, const size_t index, void *data) {
     LIST_INIT_ERR(li);
     size_t n = 0;
 
@@ -70,7 +69,8 @@ inline void list_insert(list_t *li, const size_t index, void *data) {
         list_push_front(li, data);
     } else {
         struct listnode_t *target = calloc(1, sizeof(struct listnode_t));
-        struct listnode_t *old = NULL;
+        //struct listnode_t *old = NULL;
+        new(old, listnode_t *);
 
         LIST_FOR(i, li) {
             if (n == index) {
@@ -89,7 +89,7 @@ inline void list_insert(list_t *li, const size_t index, void *data) {
 
 }
 
-inline void list_push_back(list_t *li, void *data) {
+void list_push_back(list_t *li, void *data) {
     LIST_INIT_ERR(li);
     struct listnode_t *tail = calloc(1, sizeof(struct listnode_t));
     tail->data = data;
@@ -108,7 +108,7 @@ inline void list_push_back(list_t *li, void *data) {
 }
 
 
-inline void list_push_front(list_t *li, void *data) {
+void list_push_front(list_t *li, void *data) {
     LIST_INIT_ERR(li);
 
     struct listnode_t *head = calloc(1, sizeof(struct listnode_t));
@@ -127,7 +127,7 @@ inline void list_push_front(list_t *li, void *data) {
 }
 
 
-inline void list_append(list_t *li, list_t *other) {
+void list_append(list_t *li, list_t *other) {
     LIST_INIT_ERR(li);
     LIST_INIT_ERR(other);
 
@@ -138,18 +138,18 @@ inline void list_append(list_t *li, list_t *other) {
 }
 
 
-inline bool list_is_empty(const list_t *li) {
+bool list_is_empty(const list_t *li) {
     return list_len(li) == 0;
 }
 
 
-inline size_t list_len(const list_t *li) {
+size_t list_len(const list_t *li) {
     LIST_INIT_ERR(li);
     return li->size;
 }
 
 
-inline void list_foreach(const list_t *li, void f(void *)) {
+void list_foreach(const list_t *li, void f(void *)) {
     LIST_INIT_ERR(li);
     LIST_FOR(i, li) {
         f(i->data);
@@ -157,7 +157,7 @@ inline void list_foreach(const list_t *li, void f(void *)) {
 }
 
 
-inline void *list_filter(const list_t *li,
+void *list_filter(const list_t *li,
                          const void *key,
                          bool (*pred)(const void *, const void *)) {
     LIST_INIT_ERR(li);
@@ -172,7 +172,7 @@ inline void *list_filter(const list_t *li,
 }
 
 
-inline void *list_find(const list_t *li,
+void *list_find(const list_t *li,
                        const void *key,
                        bool pred(const void *, const void *)) {
     LIST_INIT_ERR(li);
@@ -184,7 +184,7 @@ inline void *list_find(const list_t *li,
     return NULL;
 }
 
-inline bool list_contains(list_t *li,
+bool list_contains(list_t *li,
                           const void *key,
                           int (*pred)(const void *, const void *)) {
     LIST_INIT_ERR(li);

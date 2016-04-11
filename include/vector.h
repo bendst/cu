@@ -55,7 +55,7 @@ typedef struct  {
  *
  *  @return a new vector
  **/
-extern vector_t *vector_new();
+extern vector_t vector_new();
 
 
 /** @brief Creates a empty vector of the size n
@@ -68,7 +68,7 @@ extern vector_t *vector_new();
  *  @param returns a new vector
  *  @return a new vector
  **/
-extern vector_t *vector_with_cap(size_t n);
+extern vector_t vector_with_cap(size_t n);
 
 
 /**

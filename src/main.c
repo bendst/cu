@@ -5,11 +5,16 @@
 #include "cu.h"
 
 
+struct Test {
+    float a;
+    int b;
+    char *c;
+};
+
 void print(void *ptr) {
     int32_t data = *(int32_t *)ptr;
     printf("%d\n", data);
 }
-
 
 int reverse_order(const void *a, const void *b) {
     int aint = *(int *)a;
@@ -17,93 +22,13 @@ int reverse_order(const void *a, const void *b) {
     return bint - aint;
 }
 
-
 int has_int(const void *a, const void *b) {
     return memcmp(a, *(void **)b, sizeof(int32_t));
 }
 
-
 int main() {
-    cu_init(NULL);
-    vector_t *v1 = cu_new(v1);
-    list_t *l1 = cu_new(l1);
-
-    vector_t v2 = VECTOR_INIT(20);
-    int32_t array[40] = {
-        0
-    };
-    for (size_t i = 0; i < 40; i++) {
-        array[i] = i;
-    }
-    for (size_t i = 0; i < 20; i++) {
-        cu_push(v1, &array[i]);
-        cu_insert(&v2, 0, &array[i]);
-        cu_insert(&v2, 20, &array[i]);
-        cu_insert(&v2, 40, &array[i]);
-    }
-
-    /* vector_foreach(v1, print); */
-    cu_foreach(&v2, print);
-
-    VECTOR_DEL(v2, NULL);
-    int key = 21;
-    int result = cu_contains(v1, &key, has_int);
-    printf("HAS %d %d\n", key, result);
-
-
-    key = 5;
-    result = cu_contains(v1, &key, has_int);
-    printf("HAS %d %d\n", key, result);
-
-
-    vector_sort(v1, reverse_order);
-    printf("sort\n");
-    vector_remove(v1, 2, NULL);
-    cu_foreach(v1, print);
-
-
-    cu_del(v1);
-
-
-    list_t l2 = LIST_INIT;
-    printf("%p %p %p\n", &l2, l2.head, l2.tail);
-    printf("list size: %ld\n", l2.size);
-    for (size_t i = 21; i < 40; i++) {
-        cu_push(&l2, &array[i]);
-    }
-    printf("list size: %ld\n", l2.size);
-
-
-    cu_foreach(&l2, print);
-    LIST_DEL(l2, NULL);
-    /* printf("%p %p %p\n",&l2, l2.head, l2.tail ); */
-
-    printf("list size: %ld\n", l1->size);
-    for (size_t i = 0; i < 20; i++) {
-        cu_push(l1, &array[i]);
-    }
-    printf("list size: %ld\n", l1->size);
-
-
-    cu_foreach(l1, print);
-    cu_del(l1);
-    /*
-     * list_filter(l1, NULL, NULL);
-     * list_find(NULL, NULL, NULL);
-     */
-
-    option_t opt = option(NULL);
-
-    printf("option some%d\n", opt.is_some(&opt));
-    printf("option none %d\n", opt.is_none(&opt));
-
-    cu_log_level(WARNING);
-    cu_log_target(stdout);
-
-    cu_log(ALL, "Hallo");
-    cu_log(INFO, "Hallo");
-    cu_log(WARNING, "Hallo");
-    cu_log(ERROR, "Hallo"); 
-    cu_log(FATAL, "Hallo");
+    vector_t v = vector_new();
+    int a = 42;
+    vector_push(&v, &a);
     return 0;
 }

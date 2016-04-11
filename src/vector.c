@@ -2,19 +2,17 @@
 #include <stdio.h>
 #include "vector.h"
 #include "util.h"
-
-#define VECTOR_NOT_INIT(V) if (V == NULL) { \
-        fprintf(stderr, "vector not initialized\n"); \
-        exit(EXIT_FAILURE); }
-
+#include <assert.h>
 
 static inline void vector_push_front(vector_t *v, void *data) {
-    VECTOR_NOT_INIT(v);
+    assert(v);
+    assert(data);
     if (v->memsize - 1 >= v->count) {
         memmove(v->data + 1, v->data, sizeof(void *) * v->count);
     } else {
         v->memsize *= 2;
         v->data = realloc(v->data, sizeof(void *) * v->memsize);
+        assert(v->data);
         memmove(v->data + 1, v->data, sizeof(void *) * v->count);
     }
     v->data[0] = data;
@@ -22,35 +20,36 @@ static inline void vector_push_front(vector_t *v, void *data) {
 }
 
 
-inline vector_t *vector_new() {
+vector_t vector_new() {
     return vector_with_cap(8);
 }
 
 
-inline size_t vector_len(const vector_t *v) {
-    VECTOR_NOT_INIT(v);
+size_t vector_len(const vector_t *v) {
+    assert(v);
     return v->count;
 }
 
 
-inline bool vector_is_empty(const vector_t *v) {
-    VECTOR_NOT_INIT(v);
+bool vector_is_empty(const vector_t *v) {
+    assert(v);
     return vector_len(v) == 0;
 }
 
 
-inline vector_t *vector_with_cap(size_t n) {
-    vector_t *v = calloc(1, sizeof(vector_t));
-    v->data = calloc(n, sizeof(void *));
-    v->memsize = n;
-    v->count = 0;
+vector_t vector_with_cap(size_t n) {
+    vector_t v;
+    v.data = calloc(n, sizeof(void *));
+    assert(v.data);
+    v.memsize = n;
+    v.count = 0;
     return v;
 }
 
 
-inline void vector_insert(vector_t *v, size_t index, void *data) {
-    VECTOR_NOT_INIT(v);
-
+void vector_insert(vector_t *v, size_t index, void *data) {
+    assert(v);
+    assert(data);
     if (index == 0) {
         vector_push_front(v, data);
     } else if (index > v->count) {
@@ -68,9 +67,9 @@ inline void vector_insert(vector_t *v, size_t index, void *data) {
 
 }
 
-
-inline void vector_push(vector_t *v, void *data) {
-    VECTOR_NOT_INIT(v);
+void vector_push(vector_t *v, void *data) {
+    assert(v);
+    assert(data);
     if (v->memsize == v->count) {
         v->memsize *= 2;
         v->data = realloc(v->data, sizeof(void *) * v->memsize);
@@ -79,13 +78,14 @@ inline void vector_push(vector_t *v, void *data) {
 }
 
 
-inline void vector_pop(vector_t *v, void (*df)(void *)) {
+void vector_pop(vector_t *v, void (*df)(void *)) {
+    assert(v);
     vector_remove(v, v->count, df);
 }
 
 
-inline void vector_remove(vector_t *v, size_t index, void df(void *)) {
-    VECTOR_NOT_INIT(v);
+void vector_remove(vector_t *v, size_t index, void df(void *)) {
+    assert(v);
     size_t i = index;
     if (v->count <= index) {
         i = v->count - 1;
@@ -100,8 +100,8 @@ inline void vector_remove(vector_t *v, size_t index, void df(void *)) {
 }
 
 
-inline void *vector_get(const vector_t *v, size_t index) {
-    VECTOR_NOT_INIT(v);
+void *vector_get(const vector_t *v, size_t index) {
+    assert(v);
     if (index >= v->count) {
         index = v->count - 1;
     }
@@ -109,22 +109,24 @@ inline void *vector_get(const vector_t *v, size_t index) {
 }
 
 
-inline void vector_foreach(const vector_t *v, void (*f)(void *)) {
-    VECTOR_NOT_INIT(v);
+void vector_foreach(const vector_t *v, void (*f)(void *)) {
+    assert(v);
     size_t i;
     for (i = 0; i < v->count; i++) {
+        assert(v->data[i]);
         f(v->data[i]);
     }
 }
 
 
-inline void vector_del(vector_t *v) {
+void vector_del(vector_t *v) {
+    assert(v);
     free(v->data);
-    free(v);
 }
 
 
-inline void vector_clear(vector_t *v, void (*df)(void *)) {
+void vector_clear(vector_t *v, void (*df)(void *)) {
+    assert(v);
     if (df == NULL) {
         memset(v->data, 0, sizeof(void *) * v->count);
     } else {
@@ -134,24 +136,28 @@ inline void vector_clear(vector_t *v, void (*df)(void *)) {
 }
 
 
-inline void vector_clear_del(vector_t *v, void (*df)(void *)) {
+void vector_clear_del(vector_t *v, void (*df)(void *)) {
+    assert(v);
     vector_clear(v, df);
     vector_del(v);
 }
 
 
-inline bool vector_contains(const vector_t *v, const void *key, int (*pred)(
+bool vector_contains(const vector_t *v, const void *key, int (*pred)(
                                 const void *,
                                 const void *)) {
-    VECTOR_NOT_INIT(v);
+    assert(v);
+    assert(v->data);
+    assert(key);
     return bsearch(key, v->data, v->count, sizeof(void *), pred) != NULL;
 }
 
 
-inline void *vector_find(const vector_t *v, const void *key, bool (*pred)(
+void *vector_find(const vector_t *v, const void *key, bool (*pred)(
                              const void *,
                              const void *)) {
-    VECTOR_NOT_INIT(v);
+    assert(v);
+    assert(key);
     void *item = NULL;
     for (size_t i = 0; i < v->count; i++) {
         item = vector_get(v, i);
@@ -163,7 +169,8 @@ inline void *vector_find(const vector_t *v, const void *key, bool (*pred)(
 }
 
 
-inline void vector_sort(vector_t *v, int (*pred)(const void *, const void *)) {
-    VECTOR_NOT_INIT(v);
+void vector_sort(vector_t *v, int (*pred)(const void *, const void *)) {
+    assert(v);
+    assert(v->data);
     qsort(v->data, v->count, sizeof(void *), pred);
 }
