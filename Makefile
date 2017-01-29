@@ -1,7 +1,7 @@
 TARGET=cutest
 TARGET_BUILD=debug
 OUTPUT_OPTION=-o $(subst src,obj,$@)
-MODS=vector list option util sync
+MODS=vector list option util sync rc server
 CFLAGS=-Iinclude -Ilib -Wall -Wextra -std=gnu11
 LDFLAGS=-pthread lib/libcu.a
 OBJ=$(addprefix obj/, $(addsuffix .o, $(MODS)))
